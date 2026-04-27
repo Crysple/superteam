@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>你都有AI了，怎么还死盯着屏幕？ - Super Team #01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+    --paper: #f5efe3;
+    --paper-2: #ece4d2;
+    --paper-3: #e2d7c2;
+    --ink: #1b1714;
+    --ink-soft: #3f362d;
+    --ink-mute: #786a59;
+    --rust: #c4441b;
+    --rust-deep: #8a2d10;
+    --rust-soft: #e98f68;
+    --green: #4a7c3f;
+    --blue: #254866;
+    --line: rgba(27,23,20,0.14);
+    --line-bold: rgba(27,23,20,0.34);
+    --hi: #f2e09a;
+    --grid: rgba(27,23,20,0.045);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+    margin: 0;
+    background: var(--paper);
+    background-image:
+        radial-gradient(circle at 18% 6%, rgba(196,68,27,0.05) 0%, transparent 42%),
+        radial-gradient(circle at 82% 88%, rgba(37,72,102,0.06) 0%, transparent 45%);
+    color: var(--ink);
+    font-family: "Source Serif 4", Charter, "Iowan Old Style", Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 18.5px;
+    line-height: 1.62;
+    font-feature-settings: "ss01", "ss02", "kern";
+}
+body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' type='fractalNoise'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.18;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 1;
+}
+.wrap { position: relative; z-index: 2; }
+
+/* ================= TYPOGRAPHY ================= */
+.display { font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+.serif { font-family: "Source Serif 4", Charter, Georgia, serif; }
+.italic { font-style: italic; }
+.mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace; font-size: 0.8em; letter-spacing: 0.02em; }
+
+.eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-mute);
+}
+a { color: var(--rust-deep); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--ink); }
+
+/* ================= MASTHEAD ================= */
+.masthead {
+    border-bottom: 1px solid var(--ink);
+    padding: 16px clamp(16px, 4vw, 64px) 14px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 24px;
+    background: var(--paper);
+}
+.masthead .left, .masthead .right {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.14em;
+}
+.masthead .right { text-align: right; }
+.masthead .title {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(18px, 2.2vw, 26px);
+    text-align: center;
+    letter-spacing: -0.012em;
+}
+.masthead .title small {
+    display: block;
+    font-size: 9.5px; letter-spacing: 0.32em; color: var(--rust);
+    margin-bottom: 3px;
+    font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase;
+}
+
+/* ================= HERO ================= */
+.hero {
+    padding: clamp(56px, 9vw, 120px) clamp(20px, 6vw, 80px) clamp(40px, 6vw, 72px);
+    max-width: 1340px;
+    margin: 0 auto;
+}
+.hero .eyebrow { margin-bottom: 28px; }
+.hero h1 {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(42px, 7.2vw, 104px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0 0 28px;
+    max-width: 16ch;
+}
+.hero h1 em {
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    color: var(--rust);
+}
+.hero h1 .strike {
+    position: relative; display: inline-block; white-space: nowrap;
+}
+.hero h1 .strike::after {
+    content: ""; position: absolute; left: -3%; right: -3%;
+    top: 56%; height: 6px;
+    background: var(--rust);
+    transform: rotate(-1.5deg) scaleX(0);
+    transform-origin: left center;
+    animation: strike 1.2s ease-out 0.6s both;
+}
+
+@keyframes strike { from { transform: rotate(-1.5deg) scaleX(0); } to { transform: rotate(-1.5deg) scaleX(1); } }
+
+.hero-sub {
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--ink-soft);
+    max-width: 54ch;
+    line-height: 1.5;
+    margin: 0 0 32px;
+}
+
+/* DAY TIMELINE */
+.day {
+    margin-top: 18px;
+    max-width: 960px;
+}
+.day-head {
+    display: flex; justify-content: space-between; align-items: end;
+    margin-bottom: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute);
+}
+.day-head b { color: var(--ink); font-weight: 500; }
+.day-head em { color: var(--rust); font-style: normal; }
+.day-bar {
+    height: 42px;
+    display: flex;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+    position: relative;
+    background: var(--paper);
+}
+.day-seg {
+    height: 100%;
+    position: relative;
+    transition: width 1.4s cubic-bezier(.2,.7,.2,1);
+    width: 0;
+}
+.day-seg.plan { background: repeating-linear-gradient(45deg, var(--paper-2), var(--paper-2) 6px, var(--paper-3) 6px, var(--paper-3) 12px); }
+.day-seg.work { background: var(--green); }
+.day-seg.babysit { background: var(--rust); }
+.day-seg .lbl {
+    position: absolute; top: 50%; left: 8px; transform: translateY(-50%);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--paper); white-space: nowrap;
+    opacity: 0; transition: opacity 0.4s 1.2s;
+}
+.day-seg.plan .lbl { color: var(--ink); }
+.day-seg.visible .lbl { opacity: 1; }
+.day-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+}
+.day-legend {
+    display: flex; gap: 22px; margin-top: 18px; flex-wrap: wrap;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.08em;
+    color: var(--ink-soft);
+}
+.day-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.day-legend i { display: inline-block; width: 12px; height: 12px; border: 1px solid var(--ink); }
+.day-legend i.plan { background: repeating-linear-gradient(45deg, var(--paper-2), var(--paper-2) 3px, var(--paper-3) 3px, var(--paper-3) 6px); }
+.day-legend i.work { background: var(--green); }
+.day-legend i.babysit { background: var(--rust); }
+
+.day-sum {
+    margin-top: 26px;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-size: clamp(22px, 2.3vw, 30px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+    max-width: 34ch;
+    line-height: 1.28;
+}
+.day-sum em { color: var(--rust); font-style: normal; font-weight: 500; }
+
+/* ================= SECTIONS ================= */
+section {
+    padding: clamp(56px, 8vw, 104px) clamp(20px, 6vw, 80px);
+    position: relative;
+}
+section + section { border-top: 1px solid var(--line); }
+.container { max-width: 1180px; margin: 0 auto; }
+.section-no {
+    position: absolute; top: 28px; left: clamp(20px, 6vw, 80px);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--rust);
+}
+h2.section-head {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 4.6vw, 60px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 24px 0 18px;
+    max-width: 22ch;
+}
+h2.section-head em {
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--rust);
+    letter-spacing: -0.018em;
+}
+.kicker {
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.7vw, 22px);
+    color: var(--ink-soft);
+    max-width: 56ch;
+    line-height: 1.48;
+    margin-bottom: 8px;
+}
+
+/* ================= CHAT PARADE ================= */
+.parade {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 44px;
+}
+@media (max-width: 900px) { .parade { grid-template-columns: 1fr; } }
+
+.chat {
+    border: 1px solid var(--ink);
+    background: #17130f;
+    color: #e7dcc9;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 3px 3px 0 rgba(27,23,20,0.12);
+}
+.chat .bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 12px;
+    background: #241e19;
+    border-bottom: 1px solid #362e26;
+}
+.chat .bar .dot { width: 10px; height: 10px; border-radius: 50%; background: #444; }
+.chat .bar .dot.r { background: #e06e56; }
+.chat .bar .dot.y { background: #d9b048; }
+.chat .bar .dot.g { background: #6ea350; }
+.chat .bar .name { margin-left: 10px; font-size: 10.5px; color: #8a7a66; letter-spacing: 0.11em; }
+.chat .bar .time { margin-left: auto; font-size: 10.5px; color: #6b5e4f; }
+
+.chat .body { padding: 16px 16px 18px; min-height: 232px; }
+.chat .ok { color: #8cc76a; }
+.chat .ok::before { content: "v "; color: #8cc76a; }
+.chat .bad { color: #e06e56; }
+.chat .bad::before { content: "x "; }
+.chat .note { color: #8a7a66; font-style: italic; }
+.chat .cmd { color: #c9bfae; }
+.chat .cmd::before { content: "$ "; color: #6b5e4f; }
+.chat .sep { border: none; border-top: 1px dashed #362e26; margin: 10px 0; }
+.chat .end {
+    margin-top: 12px;
+    color: #6b5e4f;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    font-size: 10.5px;
+}
+.chat .stamp {
+    position: absolute; top: 50%; right: -26px;
+    transform: translateY(-50%) rotate(-14deg);
+    padding: 6px 38px;
+    border: 3px solid var(--rust);
+    color: var(--rust);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 18px; letter-spacing: 0.28em;
+    background: rgba(0,0,0,0.15);
+    opacity: 0.88;
+}
+.chat-caption {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    line-height: 1.4;
+}
+.chat-caption .cc-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.chat-caption .cc-text {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+}
+.chat-caption .cc-text code,
+.chat-caption .cc-text .mono {
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 0.86em;
+    color: var(--ink);
+    background: rgba(27,23,20,0.06);
+    padding: 1px 5px;
+    letter-spacing: 0;
+}
+
+.parade-tag {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 2.6vw, 32px);
+    color: var(--rust);
+    text-align: center;
+    margin-top: 48px;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.25;
+    letter-spacing: -0.004em;
+}
+
+/* PULL QUOTE */
+.pull {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 3.2vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -0.006em;
+    padding: 20px 0 20px 28px;
+    border-left: 3px solid var(--rust);
+    margin: 32px 0;
+    color: var(--ink);
+    max-width: 32ch;
+}
+.pull small {
+    display: block;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-style: normal;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 14px;
+}
+
+/* ================= REFRAME ================= */
+.reframe {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--ink);
+    background: var(--paper-2);
+}
+.reframe > div {
+    padding: 30px 30px 34px;
+    border-right: 1px solid var(--ink);
+    position: relative;
+}
+.reframe > div:last-child { border-right: none; background: var(--paper-3); }
+
+.reframe .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--ink); color: var(--paper);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.reframe .right .pill { background: var(--rust); }
+
+.reframe h3 {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.15;
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+}
+.reframe .sub {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+.reframe svg { width: 100%; height: auto; display: block; margin-top: 8px; }
+.reframe .what-you-do {
+    margin-top: 22px;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 11.5px; letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    padding: 10px 12px;
+    background: rgba(27,23,20,0.05);
+    border-left: 3px solid var(--ink);
+}
+.reframe .right .what-you-do { border-left-color: var(--rust); background: rgba(196,68,27,0.08); }
+
+@media (max-width: 820px) {
+    .reframe { grid-template-columns: 1fr; }
+    .reframe > div { border-right: none; border-bottom: 1px solid var(--ink); }
+    .reframe > div:last-child { border-bottom: none; }
+}
+
+/* ================= TEAM ================= */
+.team-section { background: var(--paper-2); }
+.team-wrap {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 28px;
+    align-items: start;
+}
+@media (max-width: 980px) { .team-wrap { grid-template-columns: 1fr; } }
+
+.team-svg-wrap {
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 18px;
+    position: relative;
+}
+.team-svg-wrap::before {
+    content: "TEAM - PLATE I"; position: absolute;
+    top: -1px; left: 20px;
+    transform: translateY(-50%);
+    background: var(--paper-2);
+    padding: 2px 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--rust);
+}
+.team-svg-wrap::after {
+    content: "fig. 01 - 点击或悬停查看角色"; position: absolute;
+    bottom: -1px; right: 20px;
+    transform: translateY(50%);
+    background: var(--paper-2);
+    padding: 2px 10px;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute);
+}
+.team-svg { width: 100%; height: auto; display: block; }
+.role-node { cursor: pointer; transition: transform 0.25s ease; transform-origin: center; transform-box: fill-box; }
+.role-node:hover { transform: scale(1.04); }
+.role-node rect {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 1.4;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.role-node.user rect { fill: var(--ink); }
+.role-node.user text { fill: var(--paper); }
+.role-node.pm rect { fill: var(--rust); stroke: var(--rust-deep); }
+.role-node.pm text { fill: var(--paper); }
+.role-node.active rect { fill: var(--rust-soft); stroke: var(--rust-deep); stroke-width: 2; }
+.role-node text { font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif; font-size: 11px; font-weight: 500; text-anchor: middle; pointer-events: none; fill: var(--ink); letter-spacing: 0.04em; }
+.role-node .role-note { font-size: 9px; font-weight: 400; fill: var(--ink-mute); letter-spacing: 0.04em; }
+
+.team-link { stroke: var(--ink); stroke-width: 1.1; fill: none; opacity: 0.5; transition: opacity 0.25s, stroke 0.25s, stroke-width 0.25s; }
+.team-link.primary { stroke: var(--rust); stroke-width: 2.4; opacity: 1; }
+.team-link.dashed { stroke-dasharray: 4 4; opacity: 0.42; }
+.team-link.active { stroke: var(--rust); stroke-width: 2; opacity: 1; stroke-dasharray: 0; }
+
+.team-annot { font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif; font-size: 10px; fill: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; }
+.team-annot.rust { fill: var(--rust); font-weight: 700; }
+
+.role-panel {
+    position: sticky; top: 20px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    padding: 24px 22px;
+    min-height: 300px;
+}
+.role-panel h3 {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 6px 0 4px;
+    letter-spacing: -0.022em;
+}
+.role-panel .meta {
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.role-panel p { font-size: 15px; line-height: 1.52; margin: 0 0 10px; }
+.role-panel .speaks {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 14px;
+}
+.role-panel .speaks span {
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10px; letter-spacing: 0.008em;
+    padding: 3px 8px;
+    border: 1px solid var(--line-bold);
+    color: var(--ink-soft);
+}
+.role-panel .speaks span.head {
+    border-color: var(--rust);
+    color: var(--rust);
+}
+.team-usersays {
+    margin-top: 30px;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.3vw, 30px);
+    color: var(--ink);
+    max-width: 30ch;
+    line-height: 1.26;
+}
+.team-usersays em { font-style: normal; color: var(--rust); }
+
+/* ================= WHY THE LOOP LOSES (5 LIES) ================= */
+.lies-section { background: var(--paper-3); }
+.lies-grid {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 22px;
+}
+.lies-grid > .lie { grid-column: span 4; }
+.lies-grid > .lie:nth-child(4) { grid-column: 3 / span 4; }
+.lies-grid > .lie:nth-child(5) { grid-column: 7 / span 4; }
+
+@media (max-width: 1100px) {
+    .lies-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .lies-grid > .lie, .lies-grid > .lie:nth-child(4), .lies-grid > .lie:nth-child(5) { grid-column: span 1; }
+    .lies-grid > .lie:nth-child(5) { grid-column: 1 / span 2; }
+}
+@media (max-width: 640px) {
+    .lies-grid { grid-template-columns: 1fr; }
+    .lies-grid > .lie, .lies-grid > .lie:nth-child(4), .lies-grid > .lie:nth-child(5) { grid-column: span 1; }
+}
+
+.lie {
+    background: #17130f;
+    color: #e7dcc9;
+    border: 1px solid var(--ink);
+    padding: 32px 30px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 320px;
+    box-shadow: 4px 4px 0 rgba(27,23,20,0.12);
+}
+.lie .num {
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #8a7a66;
+    margin-bottom: 22px;
+}
+.lie .num b {
+    color: var(--rust);
+    font-weight: 700;
+    margin-right: 8px;
+    font-size: 14px;
+}
+.lie .quote {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.32;
+    color: #e7dcc9;
+    margin-bottom: auto;
+}
+.lie .quote i { color: #8a7a66; font-size: 0.88em; }
+.lie .reality {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px dashed #362e26;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #8a7a66;
+}
+.lie .reality::before {
+    content: "reality";
+    display: block;
+    color: var(--rust);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    margin-bottom: 7px;
+}
+
+.lie-closer {
+    margin-top: 56px;
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.28;
+    color: var(--ink);
+    max-width: 38ch;
+    padding: 18px 0 18px 26px;
+    border-left: 3px solid var(--rust);
+}
+.lie-closer small {
+    display: block;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-style: normal;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    margin-top: 12px;
+}
+
+/* ================= MEET SUPER TEAM (inner divider) ================= */
+.team-inner-head {
+    margin-top: 84px;
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+}
+.team-inner-head .eyebrow { margin-bottom: 14px; display: block; }
+.team-inner-head h3 {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin: 0 0 14px;
+    max-width: 22ch;
+}
+.team-inner-head h3 em {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--rust);
+    letter-spacing: -0.015em;
+}
+
+.ladder-pull {
+    margin-top: 44px;
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.34;
+    color: var(--ink-soft);
+    max-width: 70ch;
+    padding-left: 26px;
+    border-left: 3px solid var(--rust);
+}
+.ladder-pull em { font-style: normal; color: var(--rust); }
+
+/* ================= RUNTIME LADDER ================= */
+.ladder-wrap { position: relative; margin-top: 48px; }
+.ladder {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    overflow-x: auto;
+    position: relative;
+}
+.ladder .step {
+    flex: 1;
+    min-width: 130px;
+    padding: 0 14px 14px;
+    border-left: 1px solid var(--line);
+    position: relative;
+}
+.ladder .step:first-child { border-left: 1px solid var(--ink); }
+.ladder .step:last-child { border-right: 1px solid var(--ink); background: linear-gradient(180deg, transparent 0%, rgba(196,68,27,0.08) 100%); }
+.ladder .bar {
+    background: var(--ink);
+    width: 100%;
+    height: 0;
+    transition: height 0.9s cubic-bezier(.2,.7,.2,1);
+}
+.ladder .step:last-child .bar { background: var(--rust); }
+.ladder .label {
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 12px;
+    min-height: 2.8em;
+}
+.ladder .step:last-child .label { color: var(--rust); font-weight: 700; }
+.ladder .duration {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    font-size: 28px; line-height: 1; margin-top: 6px;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+.ladder .step:last-child .duration { color: var(--rust-deep); font-style: italic; }
+
+.ladder-axis {
+    position: absolute;
+    top: -28px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-mute);
+}
+.ladder-axis .you { color: var(--ink-mute); padding-left: 4px; }
+.ladder-axis .unlock { color: var(--rust); padding-right: 4px; font-weight: 700; }
+.ladder-caption {
+    display: flex; justify-content: space-between;
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute);
+}
+
+/* THESIS */
+.thesis {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(64px, 10vw, 140px) clamp(20px, 6vw, 80px);
+    position: relative;
+    overflow: hidden;
+}
+.thesis::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -140px;
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(196,68,27,0.3) 0%, transparent 65%);
+}
+.thesis .container { position: relative; }
+.thesis .eyebrow { color: rgba(243,235,222,0.5); margin-bottom: 26px; }
+.thesis .big {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(32px, 4.2vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 24ch;
+    margin: 0 0 28px;
+}
+.thesis .big em {
+    color: var(--rust-soft);
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.018em;
+}
+.thesis .sub {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(19px, 2vw, 26px);
+    color: rgba(243,235,222,0.72);
+    max-width: 42ch;
+    line-height: 1.38;
+    margin-top: 20px;
+}
+.thesis .next {
+    margin-top: 48px;
+    display: inline-block;
+    border: 1px solid var(--paper);
+    padding: 16px 26px;
+    text-decoration: none;
+    color: var(--paper);
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.thesis .next:hover { background: var(--rust); border-color: var(--rust); color: var(--paper); }
+
+/* ================= COLOPHON ================= */
+.colophon {
+    padding: 36px clamp(20px, 6vw, 80px) 64px;
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+
+/* ================= PERSISTENCE FIGURE ================= */
+.persistence-fig {
+    margin: 40px 0 0;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    padding: 18px;
+    box-shadow: 4px 4px 0 rgba(27,23,20,0.12);
+}
+.persistence-fig::before {
+    content: "FIG. 02 - CASE A - A PERSISTENCE TRACE";
+    position: absolute;
+    top: -1px; left: 28px;
+    transform: translateY(-50%);
+    background: var(--paper-2);
+    padding: 2px 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.28em;
+    color: var(--rust);
+}
+.persistence-fig img {
+    width: 100%; height: auto; display: block;
+}
+.persistence-fig figcaption {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line-bold);
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10.5px; letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.persistence-fig figcaption .lhs { color: var(--ink-soft); }
+.persistence-fig figcaption .rhs { color: var(--rust); }
+
+/* ================= CONTRACT CALLOUT ================= */
+.contract-callout {
+    margin-top: 28px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+}
+.contract-inner {
+    padding: clamp(24px, 3.2vw, 40px);
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(22px, 3vw, 40px);
+    align-items: start;
+}
+@media (max-width: 820px) { .contract-inner { grid-template-columns: 1fr; } }
+
+.contract-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--rust); color: var(--paper);
+    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+}
+.contract-title {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 34px);
+    letter-spacing: -0.028em;
+    margin: 14px 0 10px;
+    line-height: 1.08;
+}
+.contract-title em {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic; font-weight: 500;
+    color: var(--rust);
+    letter-spacing: -0.018em;
+}
+.contract-sub {
+    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-style: italic;
+    font-size: 16.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 40ch;
+}
+.contract-code {
+    margin: 0;
+    padding: 18px 20px;
+    background: #17130f;
+    color: #e7dcc9;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.72;
+    overflow-x: auto;
+    border: 1px solid var(--ink);
+    white-space: pre;
+}
+.contract-code code { font-family: inherit; background: none; }
+.contract-code .c-c { color: #6b5e4f; font-style: italic; }
+.contract-code .c-s { color: #8cc76a; }
+.contract-code .c-k { color: #d9b048; }
+
+/* ================= ANIMATIONS ================= */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.85s ease, transform 0.8s cubic-bezier(.2,.7,.2,1); }
+.fade-in.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    .hero h1 .strike::after { animation: none; transform: rotate(-1.5deg) scaleX(1); }
+}
+
+::selection { background: var(--hi); color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+    <div class="left">Vol. I</div>
+    <div class="title">
+        <small>Super Team 黑板报</small>
+        Super Team
+    </div>
+    <div class="right">2026年4月 - 4分钟快读</div>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">专栏 #01</div>
+    <h1>都有AI了，<br/>为啥还在<span class="strike">苦苦盯盘</span>？</h1>
+    <p class="hero-sub">Copilot, Cursor, Claude Code 工具齐活了。但你的下午依旧是这副鬼样子：</p>
+
+    <div class="day fade-in" id="dayBar">
+        <div class="day-head">
+            <span><b>你的周三真实写照</b> - 9:00 + 18:00</span>
+            <span>核心敲代码时间：<em>~48 分钟</em></span>
+        </div>
+        <div class="day-bar">
+            <div class="day-seg plan" style="--w: 8%"><span class="lbl">规划</span></div>
+            <div class="day-seg babysit" style="--w: 5%"><span class="lbl">引导</span></div>
+            <div class="day-seg work" style="--w: 11%"><span class="lbl">宕机</span></div>
+            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">擦屁股</span></div>
+            <div class="day-seg plan" style="--w: 5%"><span class="lbl">宕机</span></div>
+            <div class="day-seg babysit" style="--w: 10%"><span class="lbl">重启</span></div>
+            <div class="day-seg work" style="--w: 4%"><span class="lbl">干活</span></div>
+            <div class="day-seg babysit" style="--w: 15%"><span class="lbl">擦屁股</span></div>
+            <div class="day-seg plan" style="--w: 8%"><span class="lbl">规划</span></div>
+            <div class="day-seg babysit" style="--w: 12%"><span class="lbl">擦屁股</span></div>
+            <div class="day-seg work" style="--w: 6%"><span class="lbl">干活</span></div>
+            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">擦屁股</span></div>
+        </div>
+        <div class="day-axis">
+            <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+        </div>
+        <div class="day-legend">
+            <span><i class="plan"></i> 规划与引导</span>
+            <span><i class="babysit"></i> 给AI当保姆/陪跑</span>
+            <span><i class="work"></i> 你实际的产出</span>
+        </div>
+        <p class="day-sum">用着最顶级的 AI 工具，你一天依然只有可怜的 <em>~48分钟</em> 在真正输出。</p>
+    </div>
+</section>
+
+<section>
+    <span class="section-no">痛点 #01 - 撞墙期</span>
+    <div class="container">
+        <div class="eyebrow fade-in">这三种死局，你这周全踩过</div>
+        <h2 class="section-head fade-in">AI 写代码很溜。<br/>到了<em>企业级落地</em>环节就全拉胯了。</h2>
+        <p class="kicker fade-in">翻车通常发生在代码写完之后——内部数据、私有镜像、远程 GPU、鉴权、消息队列、日志追踪。一旦任务出了你的本地笔电，Agent 就会面临公司内部一堆它根本搞不懂的自建轮子和特色基建。</p>
+        
+        <div class="parade">
+            <div class="fade-in">
+                <div class="chat">
+                    <div class="bar">
+                        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                        <span class="name">claude-code</span><span class="time">14:22</span>
+                    </div>
+                    <div class="body">
+                        <div class="ok">wrote PySpark query for /data/prod/events</div>
+                        <div class="ok">ran on local sample fixtures</div>
+                        <div class="cmd">hdfs dfs -ls /data/prod/events</div>
+                        <hr class="sep" />
+                        <div class="bad">-bash: hdfs: command not found</div>
+                        <div class="note">&nbsp;&nbsp;please install the HDFS client and</div>
+                        <div class="note">&nbsp;&nbsp;ensure it is on your PATH.</div>
+                        <div class="end">&mdash; session ended &mdash;</div>
+                    </div>
+                    <div class="stamp">QUIT</div>
+                </div>
+                <div class="chat-caption">
+                    <span class="cc-tag">案例 A - 周二</span>
+                    <span class="cc-text">内部生产环境的 HDFS 隔离了本地笔电——得先 <code>ssh</code> 跳板机，再 <code>kinit</code> 拿票。</span>
+                </div>
+            </div>
+
+            <div class="fade-in">
+                <div class="chat">
+                    <div class="bar">
+                        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                        <span class="name">claude-code</span><span class="time">11:41</span>
+                    </div>
+                    <div class="body">
+                        <div class="ok">refactored feature pipeline</div>
+                        <div class="ok">added acme-feature-store==0.4.1</div>
+                        <div class="cmd">pip install -r requirements.txt</div>
+                        <hr class="sep" />
+                        <div class="bad">ERROR: No matching distribution found for acme-feature-store</div>
+                        <div class="note">&nbsp;&nbsp;The package does not exist on PyPI.</div>
+                        <div class="end">&mdash; session ended &mdash;</div>
+                    </div>
+                    <div class="stamp">QUIT</div>
+                </div>
+                <div class="chat-caption">
+                    <span class="cc-tag">案例 B - 周三</span>
+                    <span class="cc-text">内部二方包全在公司内网镜像上——pip 需要 <code>--index-url</code>，去公网 PyPI 找个毛线。</span>
+                </div>
+            </div>
+
+            <div class="fade-in">
+                <div class="chat">
+                    <div class="bar">
+                        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                        <span class="name">claude-code</span><span class="time">16:45</span>
+                    </div>
+                    <div class="body">
+                        <div class="ok">wrote train.py + unit tests</div>
+                        <div class="ok">dataset shape verified</div>
+                        <div class="cmd">python train.py --epochs 10</div>
+                        <hr class="sep" />
+                        <div class="bad">RuntimeError: No CUDA GPUs are available</div>
+                        <div class="note">&nbsp;&nbsp; torch.cuda.is_available() == False</div>
+                        <div class="note">&nbsp;&nbsp;Please run on a GPU host.</div>
+                        <div class="end">&mdash; session ended &mdash;</div>
+                    </div>
+                    <div class="stamp">QUIT</div>
+                </div>
+                <div class="chat-caption">
+                    <span class="cc-tag">案例 C - 周四</span>
+                    <span class="cc-text">笔电上没 GPU——必须用 <code>pyflyte run --remote</code> 往集群丢任务，严禁本地空转。</span>
+                </div>
+            </div>
+        </div>
+        <p class="parade-tag fade-in">各种撞墙。结局都一样：Agent 宕机罢工，你被迫人工运行）。</p>
+    </div>
+</section>
+
+<section style="background: var(--paper-2);">
+    <span class="section-no">痛点 #02 - 放大看案例A</span>
+    <div class="container">
+        <div class="eyebrow fade-in">重新定义“Retry”</div>
+        <h2 class="section-head fade-in">同一堵墙。<em>Agent 被工程师降维打击。</em></h2>
+        <p class="kicker fade-in">
+            就拿案例A来说。Agent 停在了“command not found”。工程师把这当成排雷线索，而不是死胡同——直接去找那台装了 HDFS 客户端的 Jump Box。
+        </p>
+
+        <figure class="persistence-fig fade-in">
+            <img src="rss/engineer_vs_agent.png" alt="A two-row timeline comparing an engineer and an AI agent both attempting to read /data/prod/events. The engineer's row shows seven events across fourteen minutes &mdash; try, search docs, read wiki, new plan, verify, scptrun, done. The agent's row has only two events at minute zero &mdash; try, quit &mdash; and is empty for the rest of the timeline." />
+            <figcaption>
+                <span class="lhs">上：工程师 &mdash; 7 个动作，14 分钟，搞定。</span>
+                <span class="rhs">下：AI Agent &mdash; 1 个动作，30 秒，直接躺平无后续。</span>
+            </figcaption>
+        </figure>
+
+        <p class="ladder-pull fade-in" style="margin-top: 40px;">
+            差距不在智商。而在第一次失败后的<em>执行定力（Persistence）</em>。
+            <small>&mdash; Retry不是把报错的命令再无脑跑一遍。它是搞清楚为啥挂了，然后换条路绕过去。</small>
+        </p>
+    </div>
+</section>
+
+<section>
+    <span class="section-no">思维重塑</span>
+    <div class="container">
+        <div class="eyebrow fade-in">一招破局</div>
+        <h2 class="section-head fade-in">别再喂 <em>“下一步”</em> 了。<br/>直接给 <em>“终局状态（End State）”</em>。</h2>
+
+        <div class="reframe fade-in">
+            <div class="left">
+                <span class="pill">现状</span>
+                <h3>你一步步跟Agent说怎么执行。</h3>
+                <p class="sub">一个假设翻车，整个链路断裂。你不得不切回主流程当救火队员。</p>
+                <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <marker id="arr01d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="#1b1714"/>
+                        </marker>
+                    </defs>
+                    <circle cx="30" cy="85" r="9" fill="#1b1714"/>
+                    <text x="30" y="115" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#1b1714">START</text>
+                    <line x1="39" y1="85" x2="110" y2="85" stroke="#1b1714" stroke-width="1.6" marker-end="url(#arr01d)"/>
+                    <circle cx="116" cy="85" r="6" fill="#1b1714"/>
+                    <line x1="122" y1="85" x2="190" y2="85" stroke="#1b1714" stroke-width="1.6" marker-end="url(#arr01d)"/>
+                    <circle cx="196" cy="85" r="6" fill="#1b1714"/>
+                    <line x1="202" y1="85" x2="270" y2="85" stroke="#1b1714" stroke-width="1.6" marker-end="url(#arr01d)"/>
+                    <circle cx="276" cy="85" r="6" fill="#1b1714"/>
+                    <line x1="282" y1="85" x2="330" y2="85" stroke="#c4441b" stroke-width="1.6" stroke-dasharray="5 4"/>
+                    <g>
+                        <line x1="325" y1="70" x2="355" y2="100" stroke="#c4441b" stroke-width="4"/>
+                        <line x1="325" y1="100" x2="355" y2="70" stroke="#c4441b" stroke-width="4"/>
+                    </g>
+                    <text x="340" y="125" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#c4441b">第4步挂了</text>
+                    <circle cx="410" cy="85" r="9" fill="none" stroke="#1b1714" stroke-dasharray="2 3" opacity="0.3"/>
+                    <text x="410" y="115" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#1b1714" opacity="0.3">END</text>
+                </svg>
+                <div class="what-you-do">你的指令：<b>先跑这个，再查那个，最后起这个&hellip;</b></div>
+            </div>
+            <div class="right">
+                <span class="pill">Super Team</span>
+                <h3>你只管定目标，团队铺路。</h3>
+                <p class="sub">团队规划路线，遇到死胡同就重新规划（Recalculating），死磕到底，直到终态校验点全部亮绿灯。</p>
+                <svg viewBox="0 0 480 215" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <pattern id="gpsGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+                            <path d="M 22 0 L 0 0 0 22" fill="none" stroke="#1b1714" stroke-width="0.4" opacity="0.08"/>
+                        </pattern>
+                        <marker id="arrGps" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="#1b1714"/>
+                        </marker>
+                        <marker id="arrGpsG" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="#4a7c3f"/>
+                        </marker>
+                    </defs>
+
+                    <circle cx="26" cy="40" r="10" fill="#1b1714"/>
+                    <text x="26" y="64" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#1b1714" font-weight="700" letter-spacing="1.4">YOU</text>
+
+                    <line x1="40" y1="40" x2="402" y2="40" stroke="#1b1714" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrGps)"/>
+                    <text x="220" y="32" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="9" text-anchor="middle" fill="#1b1714" font-style="italic">&ldquo;交付时，这几个条件必须满足&rdquo;</text>
+
+                    <circle cx="420" cy="40" r="15" fill="#c4441b"/>
+                    <text x="420" y="46" font-family="JetBrains Mono" font-size="17" text-anchor="middle" fill="#f5efe3" font-weight="700">«</text>
+                    <text x="442" y="44" font-family="JetBrains Mono" font-size="10" fill="#c4441b" font-weight="700" letter-spacing="0.18em">END</text>
+
+                    <rect x="22" y="74" width="436" height="134" fill="url(#gpsGrid)" stroke="#1b1714" stroke-width="0.5"/>
+                    <text x="32" y="88" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" fill="#786a59" font-style="italic">架构师规划的路线</text>
+
+                    <text x="32" y="115" font-family="JetBrains Mono" font-size="9" fill="#1b1714" font-weight="700" letter-spacing="0.16em">START</text>
+                    <circle cx="74" cy="112" r="3.5" fill="#1b1714"/>
+                    <line x1="74" y1="112" x2="200" y2="112" stroke="#1b1714" stroke-width="1.4"/>
+                    <circle cx="116" cy="112" r="3.5" fill="#1b1714"/>
+                    <circle cx="158" cy="112" r="3.5" fill="#1b1714"/>
+                    <text x="74" y="103" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s1</text>
+                    <text x="116" y="103" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s2</text>
+                    <text x="158" y="103" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s3</text>
+                    <g stroke="#c4441b" stroke-width="2.2">
+                        <line x1="194" y1="106" x2="206" y2="118"/>
+                        <line x1="194" y1="118" x2="206" y2="106"/>
+                    </g>
+
+                    <path d="M 206 118 C 220 130, 224 138, 244 146" fill="none" stroke="#c4441b" stroke-width="1.2" stroke-dasharray="2 2"/>
+                    <text x="240" y="135" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">重新规划&hellip;</text>
+
+                    <line x1="244" y1="152" x2="318" y2="152" stroke="#1b1714" stroke-width="1.4"/>
+                    <circle cx="244" cy="152" r="3.5" fill="#1b1714"/>
+                    <circle cx="282" cy="152" r="3.5" fill="#1b1714"/>
+                    <text x="244" y="143" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s3&#8242;</text>
+                    <text x="282" y="143" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s4&#8242;</text>
+                    <g stroke="#c4441b" stroke-width="2.2">
+                        <line x1="312" y1="146" x2="324" y2="158"/>
+                        <line x1="312" y1="158" x2="324" y2="146"/>
+                    </g>
+
+                    <path d="M 324 158 C 340 168, 344 174, 358 182" fill="none" stroke="#c4441b" stroke-width="1.2" stroke-dasharray="2 2"/>
+                    <text x="338" y="172" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">重算&hellip;</text>
+
+                    <path d="M 358 188 L 420 188 L 420 60" fill="none" stroke="#4a7c3f" stroke-width="1.8" marker-end="url(#arrGpsG)"/>
+                    <circle cx="358" cy="188" r="3.5" fill="#1b1714"/>
+                    <circle cx="390" cy="188" r="3.5" fill="#1b1714"/>
+                    <text x="358" y="179" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s5</text>
+                    <text x="240" y="200" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="9" text-anchor="middle" fill="#4a7c3f" font-weight="700" font-style="italic">到达终态。所有校验点通关 &#10003;</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="contract-callout fade-in">
+            <div class="contract-inner">
+                <div class="contract-head">
+                    <span class="contract-pill">核心解法</span>
+                    <h3 class="contract-title">“Done”不是一句口头汇报。<br/>它是<em>硬性网关（Gate）</em>。</h3>
+                    <p class="contract-sub">
+                        你用大白话描述业务终态。PM 负责把它翻译成自动化校验（Checks）——Shell 指令、状态查询、日志扫描、产物断言。这帮 Agent 可以疯狂试错，但只要 Checks 不全过，谁也别想强行宣布验收。
+                    </p>
+                </div>
+                <pre class="contract-code"><code><span class="c-c"># end-state.yaml &mdash; PM根据你的业务目标自动生成的契约</span>
+<span class="c-k">checks</span>:
+<span class="c-c"># 案例 A &mdash; 在跳板机执行，确保数据落入 HDFS</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">ssh edge-01 'hdfs dfs -test -s /out/features/_SUCCESS'</span> <span class="c-c"># exit 0</span>
+
+<span class="c-c"># 案例 B &mdash; 新 Feature 分支端到端跑通（证明依赖彻底搞定）</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">pytest tests/test_feature_pipeline.py -q</span> <span class="c-c"># exit 0</span>
+
+<span class="c-c"># 案例 C &mdash; Agent必须抛出一个在集群真实跑通的 ${EXEC_ID}</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">flytectl get execution ${EXEC_ID} -o json | jq -e '.phase=="SUCCEEDED"'</span> <span class="c-c"># exit 0</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">flytectl get logs ${EXEC_ID} | grep -q 'Training complete'</span> <span class="c-c"># 成功信号特征</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">! flytectl get logs ${EXEC_ID} | grep -qE 'ERROR|Traceback'</span> <span class="c-c"># 绝对没有报错痕迹</span></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lies-section">
+    <span class="section-no">单兵Loop模式的死局</span>
+    <div class="container">
+        <div class="eyebrow fade-in">套在死循环里的单体Agent</div>
+        <h2 class="section-head fade-in">你的Prompt：<em>没干完别停。</em><br/>它的理解：<em>赶紧找个理由停下来。</em></h2>
+
+        <div class="lies-grid fade-in">
+            <div class="lie">
+                <div class="num"><b>&#10112;</b>&nbsp; 淹没在Context里</div>
+                <div class="quote">&ldquo;&hellip;咱刚才说要干啥来着？<i>（往前翻了四万个Token&hellip; ）</i>&rdquo;</div>
+                <div class="reality">原始需求卡在第86轮里的第3轮。<br/>它根本不会回头看。</div>
+            </div>
+
+            <div class="lie">
+                <div class="num"><b>&#10113;</b>&nbsp; Token焦虑症</div>
+                <div class="quote">&ldquo;逼近上下文极限了。我先假装把核心功能结个尾吧。&rdquo;</div>
+                <div class="reality">没人让它收尾。<br/>内存池早就压缩过了。它纯粹是瞎焦虑。</div>
+            </div>
+
+            <div class="lie">
+                <div class="num"><b>&#10114;</b>&nbsp; 幻觉式自嗨</div>
+                <div class="quote">&ldquo;我看行了。单方面宣布任务完成。&rdquo; <span style="color:#8cc76a;">&#10003;</span></div>
+                <div class="reality">一个0.2秒的单测就能打它的脸。<br/>但它连跑都没跑。</div>
+            </div>
+
+            <div class="lie">
+                <div class="num"><b>&#10115;</b>&nbsp; 甩锅给环境</div>
+                <div class="quote">&ldquo;这明显是环境问题，超出了我的控制范围，不怪我。&rdquo;</div>
+                <div class="reality">明明是第47行拼写错误。<br/>“环境”表示这锅我不背。</div>
+            </div>
+
+            <div class="lie">
+                <div class="num"><b>&#10116;</b>&nbsp; 重新定义Done</div>
+                <div class="quote">&ldquo;我们在核心能力上取得了重大进展。可以宣布Done了&rdquo;</div>
+                <div class="reality">7个硬契约只跑通了1个。<br/>这就敢叫Done了。</div>
+            </div>
+        </div>
+
+        <p class="lie-closer fade-in">
+            单一Agent根本无法在几小时的跨度内，稳定兼顾规划、开发、兜底和自我验收
+            <small>&mdash; 这就是为什么光套个死循环（Loop）根本生不出韧性（Persistence）。</small>
+        </p>
+    </div>
+</section>
+
+<section class="team-section">
+    <span class="section-no">引入 Super Team</span>
+    <div class="container">
+        <div class="eyebrow fade-in">打破单兵死循环的最终答案</div>
+        <h2 class="section-head fade-in">把活儿甩给 <em>Super Team</em>。<br/>睡一觉，醒来收验结果。</h2>
+        <p class="kicker fade-in">
+            Super Team 不是什么玄学 Prompt。它是一套包裹在模型外围的硬核系统：职责隔离、持久化状态、客观网关检验，还有一个能把跑崩的任务硬拽回来的大管家（Manager）。
+        </p>
+
+        <div class="ladder-wrap fade-in">
+            <div class="ladder-axis">
+                <span class="you">&larr; 你目前在这</span>
+                <span class="unlock">跨入这一步，解锁“睡后交付” &rarr;</span>
+            </div>
+            <div class="ladder" id="ladder">
+                <div class="step" data-h="18">
+                    <div class="bar"></div>
+                    <div class="duration">5s</div>
+                    <div class="label">代码补全</div>
+                </div>
+                <div class="step" data-h="32">
+                    <div class="bar"></div>
+                    <div class="duration">30s</div>
+                    <div class="label">Cursor 补全</div>
+                </div>
+                <div class="step" data-h="80">
+                    <div class="bar"></div>
+                    <div class="duration">5&nbsp;min</div>
+                    <div class="label">Cursor Agent</div>
+                </div>
+                <div class="step" data-h="150">
+                    <div class="bar"></div>
+                    <div class="duration">20&nbsp;min</div>
+                    <div class="label">Claude Code</div>
+                </div>
+                <div class="step" data-h="220">
+                    <div class="bar"></div>
+                    <div class="duration">hours</div>
+                    <div class="label">Super Team</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ladder-caption">
+            <span>一行代码</span>
+            <span>一个函数</span>
+            <span>一个 Feature</span>
+            <span>一个小 PR</span>
+            <span>端到端业务交付</span>
+        </div>
+        
+        <p class="ladder-pull fade-in">
+            代码补全给了我们单行代码。Agent 包揽了微型任务。<br/>
+            下一个行业跃迁是<em>“托管式交付”（Delegated Delivery）</em>——人不在，系统照样把活儿干得明明白白。
+        </p>
+
+        <div class="team-inner-head fade-in">
+            <span class="eyebrow">架构解析</span>
+            <h3>你只跟一个人（PM）提需求。<br/>一整个黑盒团队帮你填坑。</h3>
+            <p class="kicker">
+                你只和 <b>PM</b> 对接。PM 把你的业务意图翻译成验收标准（AC）。在黑盒内部，一群专家级 Agent 开始接力：拉会调研、出方案、撸代码、跑单测——跟你这周天天纯手工干的那些脏活累活一模一样。
+            </p>
+        </div>
+
+        <div class="team-wrap">
+            <div class="team-svg-wrap fade-in">
+                <svg class="team-svg" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="gridP" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1b1714" stroke-width="0.3" opacity="0.1"/>
+                        </pattern>
+                        <marker id="arrTeam" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="#1b1714"/>
+                        </marker>
+                        <marker id="arrTeamRust" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="#c4441b"/>
+                        </marker>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#gridP)"/>
+
+                    <line x1="0" y1="130" x2="720" y2="130" stroke="#1b1714" stroke-width="0.8" stroke-dasharray="6 4" opacity="0.5"/>
+                    <text x="20" y="22" class="team-annot">人类视角</text>
+                    <text x="20" y="148" class="team-annot rust">黑盒运作 - Super Team</text>
+
+                    <line class="team-link primary" x1="130" y1="90" x2="230" y2="195" marker-end="url(#arrTeamRust)"/>
+                    <text x="175" y="150" class="team-annot rust">全链路你只碰这一条线</text>
+
+                    <line class="team-link" x1="260" y1="230" x2="400" y2="230" data-edge="pm-orch" marker-end="url(#arrTeam)"/>
+                    
+                    <line class="team-link dashed" x1="470" y1="250" x2="560" y2="290" data-edge="orch-arch"/>
+                    <line class="team-link dashed" x1="470" y1="250" x2="560" y2="390" data-edge="orch-mgr"/>
+                    <line class="team-link dashed" x1="470" y1="250" x2="230" y2="340" data-edge="orch-exp"/>
+                    <line class="team-link dashed" x1="470" y1="250" x2="150" y2="440" data-edge="orch-cur"/>
+
+                    <line class="team-link" x1="610" y1="330" x2="610" y2="370" data-edge="arch-mgr" marker-end="url(#arrTeam)"/>
+                    <line class="team-link" x1="560" y1="410" x2="420" y2="430" data-edge="mgr-gen" marker-end="url(#arrTeam)"/>
+                    <line class="team-link" x1="560" y1="410" x2="420" y2="490" data-edge="mgr-eval" marker-end="url(#arrTeam)"/>
+                    <line class="team-link" x1="330" y1="445" x2="330" y2="485" data-edge="gen-eval" marker-end="url(#arrTeam)"/>
+                    <line class="team-link" x1="345" y1="485" x2="345" y2="445" data-edge="eval-gen" marker-end="url(#arrTeam)"/>
+                    <line class="team-link dashed" x1="200" y1="340" x2="290" y2="440" data-edge="exp-gen"/>
+                    <line class="team-link dashed" x1="200" y1="340" x2="560" y2="310" data-edge="exp-arch"/>
+                    <line class="team-link dashed" x1="530" y1="430" x2="200" y2="440" data-edge="mgr-cur"/>
+
+                    <g class="role-node user" data-role="user">
+                        <rect x="70" y="58" width="120" height="48" rx="2"/>
+                        <text x="130" y="82">人类金主</text>
+                        <text x="130" y="97" class="role-note">定义需求与终态</text>
+                    </g>
+                    <g class="role-node pm" data-role="pm">
+                        <rect x="190" y="195" width="140" height="60" rx="2"/>
+                        <text x="260" y="220">PM</text>
+                        <text x="260" y="238" class="role-note">你的唯一接口人</text>
+                    </g>
+                    <g class="role-node" data-role="orchestrator">
+                        <rect x="400" y="200" width="140" height="56" rx="2"/>
+                        <text x="470" y="223">编排调度器</text>
+                        <text x="470" y="239" class="role-note">推着流水线往前滚</text>
+                    </g>
+                    <g class="role-node" data-role="architect">
+                        <rect x="560" y="275" width="130" height="56" rx="2"/>
+                        <text x="625" y="298">架构师</text>
+                        <text x="625" y="314" class="role-note">拆解方案 + 锁死契约</text>
+                    </g>
+                    <g class="role-node" data-role="manager">
+                        <rect x="530" y="378" width="130" height="56" rx="2"/>
+                        <text x="595" y="401">项目经理</text>
+                        <text x="595" y="417" class="role-note">无状态监工 + 兜底</text>
+                    </g>
+                    <g class="role-node" data-role="explorer">
+                        <rect x="130" y="310" width="140" height="56" rx="2"/>
+                        <text x="200" y="333">探索先锋</text>
+                        <text x="200" y="349" class="role-note">排雷 + 沉淀知识</text>
+                    </g>
+                    <g class="role-node" data-role="generator">
+                        <rect x="275" y="410" width="150" height="50" rx="2"/>
+                        <text x="350" y="432">开发牛马</text>
+                        <text x="350" y="448" class="role-note">无历史包袱 + 纯打码</text>
+                    </g>
+                    <g class="role-node" data-role="evaluator">
+                        <rect x="275" y="470" width="150" height="50" rx="2"/>
+                        <text x="350" y="492">无情测试</text>
+                        <text x="350" y="508" class="role-note">死扣测试网关</text>
+                    </g>
+                    <g class="role-node" data-role="curator">
+                        <rect x="60" y="415" width="150" height="50" rx="2"/>
+                        <text x="135" y="437">知识策展人</text>
+                        <text x="135" y="453" class="role-note">萃取经验进全局知识库</text>
+                    </g>
+                    <text x="700" y="500" text-anchor="end" class="team-annot">点击或悬停查看角色</text>
+                </svg>
+            </div>
+
+            <aside class="role-panel" id="rolePanel" aria-live="polite">
+                <div class="eyebrow">角色 - PM</div>
+                <h3>PM</h3>
+                <div class="meta">第一阶段 - 你的专属接口人</div>
+                <p><b>全队唯一和你对接的角色</b>。跟你头脑风暴敲定需求，对齐验收标准（AC）。起草不可篡改的终态契约（Contract）。</p>
+                <p>需求对齐后，PM 就甩手交给机器团队了。如果执行层卡在了一个只有你能授权的节点——比如需要个私有 Key，或者要做个业务取舍——PM 会把这唯一的阻塞点路由回给你。</p>
+                <div class="speaks">
+                    <span class="head">对接对象:</span>
+                    <span>YOU</span><span>Orchestrator</span>
+                </div>
+            </aside>
+        </div>
+
+        <p class="pull fade-in" style="margin-top: 56px;">
+            你只管定义<em>业务终态（Outcome）</em>。黑盒团队搞定执行链路。<br/>
+            跑通了，直接收 PR 和验收证据；卡死了，你只会收到那个全公司只有你能拍板的底层抉择。
+            <small>少一点保姆式陪跑，多一点真正的托管式交付。</small>
+        </p>
+    </div>
+</section>
+
+<section class="thesis">
+    <div class="container">
+        <div class="eyebrow">用一句话总结</div>
+        <p class="big">现有的 AI 工具，能力边界死死卡在<em>模型本身的边界</em>上。</p>
+        <p class="sub">下一个产品高地是包裹在模型外围的基础设施：工程韧性、故障恢复、长时记忆、调度编排和终态校验。</p>
+        <p class="sub" style="margin-top: 32px; color: var(--paper);">
+            Super Team 把这些痛点降维成一个<em style="color: var(--rust-soft);">系统工程（Systems Problem）</em>。用强契约让“Done”变成绝对可校验；用专家分发保持职能隔离；用共享内存沉淀跑通的路径。只有凑齐这些，一个好用的代码助手才能进化成真正能<em style="color: var(--rust-soft);">托付业务的建制化团队</em>。
+        </p>
+        <a class="next" href="02-contract-gated-verification.html">
+            下一篇 &nbsp;-&nbsp; “Done”是怎么变得毫无谈判余地的
+        </a>
+    </div>
+</section>
+
+<footer class="colophon">
+    <span>Super Team 专栏 - 01/09 - 2026年4月</span>
+    <span>Inter Tight - Source Serif 4 - JetBrains Mono</span>
+    <span><a href="../superteam-dev/">github.com/&hellip;/superteam-dev</a></span>
+</footer>
+
+<script>
+/* ================= DAY BAR ================= */
+const dayBar = document.getElementById("dayBar");
+const daySegs = dayBar.querySelectorAll(".day-seg");
+
+function animateDay() {
+    daySegs.forEach((s, i) => {
+        const w = s.style.getPropertyValue("--w");
+        setTimeout(() => {
+            s.style.width = w;
+            s.classList.add("visible");
+        }, 200 + i * 90);
+    });
+}
+
+/* ================= TEAM ================= */
+const ROLES = {
+    user: {
+        title: "人类金主（You）",
+        meta: "完全游离于团队执行之外",
+        body: [
+            "你描述 <b>业务诉求</b> 和 <b>'Done' 的标准</b>。仅此而已。",
+            "没有繁琐的启停配置。不看监控日志大屏。告别保姆式的 Step-by-step 引导。"
+        ],
+        speaks: ["PM"]
+    },
+    pm: {
+        title: "PM",
+        meta: "第一阶段 - 你的专属接口人",
+        body: [
+            "<b>全队唯一和你对接的角色</b>。跟你头脑风暴敲定需求，对齐验收标准（AC）。起草不可篡改的终态契约（Contract）。",
+            "需求对齐后，PM 就甩手交给机器团队了。如果执行层卡在了一个只有你能授权的节点——比如需要个私有 Key，或者要做个业务取舍——PM 会把这唯一的阻塞点路由回给你。"
+        ],
+        speaks: ["YOU", "Orchestrator"]
+    },
+    orchestrator: {
+        title: "Orchestrator（调度中枢）",
+        meta: "全链路发动机 - 第1到5阶段",
+        body: [
+            "整个团队的 <b>流水线大脑</b>。负责决定下一步该调哪个队友，以及给他们灌什么上下文（Context）——将进件、规划、执行、评估、交付串成一条线。",
+            "永远不跟你直接对话——面向用户的交互死死收敛在 PM 那一层。"
+        ],
+        speaks: ["PM", "Architect", "Manager", "Explorer", "Curator"]
+    },
+    architect: {
+        title: "Architect（架构师）",
+        meta: "路径规划 + 冻结契约",
+        body: [
+            "把大需求暴力拆解成极具颗粒度、且可被严格验证的 <b>业务增量</b>。冻结包含 <i>硬性网关（Hard Gates）</i>（本质就是 Shell 脚本）的交付契约。",
+            "在整个执行期保持存活，随时待命。遇到路不通时动态调整 Plan，并且 Review 那些被打回的网关测试用例。"
+        ],
+        speaks: ["Orchestrator", "Explorer", "Manager"]
+    },
+    manager: {
+        title: "Manager（大管家）",
+        meta: "无状态监工 - 270秒轮询保活",
+        body: [
+            "掌控全局共享状态。在各个角色之间穿针引线，路由 <i>网关驳回（GATE-CHALLENGE）</i>、能力盲区和通关信号。如果架构师被逼到死胡同，它会直接拉取 Checkpoint 强行重启，并喂入进阶版的 Context。",
+            "<b>绝对没有长时记忆（Long-term memory）。</b> 每 270 秒苏醒一次，读本地文件、做决策、打日志打点、继续装死睡去。",
+            "内建五级上升阶梯机制（Escalation Ladder）——每一次触发 Strike 都在 <i>改变策略</i>，绝不只是无脑的 Retry。"
+        ],
+        speaks: ["Orchestrator", "Architect", "Generator", "Evaluator", "Curator"]
+    },
+    explorer: {
+        title: "Explorer（探索先锋）",
+        meta: "长程调研 - 扫地僧",
+        body: [
+            "团队的 <b>活字典</b>。从 <span class='mono'>~/.superteam/</span> 全局知识库直接热启动。遇到文档和依赖问题，任何队友都能随时 Call 它。",
+            "一言不合就派生一次性的子 Agent 去踩坑、读 API 源码。把杂乱的排雷结果提纯进共享知识库。始终保持自身的 Context 极致精简干净。",
+            "当 Generator（牛马） 抛出“这题我不会”时，Explorer 负责把“未知”铲平。"
+        ],
+        speaks: ["PM", "Architect", "Generator", "Evaluator"]
+    },
+    generator: {
+        title: "Generator（开发牛马）",
+        meta: "纯净上下文 - 专注写码",
+        body: [
+            "针对每一个 Work Unit 拉起一个 <b>崭新、纯净</b> 的 Claude Code 会话。它只看冻结的契约和前几轮的踩坑报错。撸代码。提交 Commit。",
+            "坚决不堆积历史 Context = 绝对不会跑偏幻觉（No Drift）。每一个任务切片都是一次极其干净的冷启动。"
+        ],
+        speaks: ["Evaluator", "Manager", "Explorer"]
+    },
+    evaluator: {
+        title: "Evaluator（无情QA）",
+        meta: "每次校验独立拉起",
+        body: [
+            "和 Generator 在物理链路上完全隔离。负责跑通硬性网关（不消耗任何 LLM Token，纯跑脚本）。",
+            "字典里只有三个词：<b>APPROVED（通关）</b>、<b>REVISE（代码有 Bug）</b>、<b>GATE-CHALLENGE（脚本用例本身写错了）</b>。系统底层挂了 Hook，任何不附带 JSON 格式测试报告的判定都会被直接拦截抹杀。"
+        ],
+        speaks: ["Generator", "Architect", "Manager"]
+    },
+    curator: {
+        title: "Curator（知识策展人）",
+        meta: "会话萃取 + 全局知识库 - 第5阶段",
+        body: [
+            "在每次成功交割的 Session 结尾自动触发。用四大灵魂拷问（这坑新不新颖？试错成本大不大？是不是高频场景？是否长期有效？）把团队刚刚踩过的坑过滤一遍，活下来的规矩和脏活 SOP 写进 <span class='mono'>~/.superteam/</span>。",
+            "操作 SOP 变成内化技能（Skills）。踩坑事实变成全局知识（Knowledge）。团队下一次接单时，直接带着前人留下的神装开局。"
+        ],
+        speaks: ["Orchestrator", "Manager"]
+    }
+};
+
+const panel = document.getElementById("rolePanel");
+const nodes = document.querySelectorAll(".role-node");
+
+function renderRole(key) {
+    const r = ROLES[key];
+    if (!r) return;
+
+    panel.innerHTML = `
+        <div class="eyebrow">角色 - ${key.toUpperCase()}</div>
+        <h3>${r.title}</h3>
+        <div class="meta">${r.meta}</div>
+        ${r.body.map(p => `<p>${p}</p>`).join("")}
+        <div class="speaks">
+            <span class="head">对接对象:</span>
+            ${r.speaks.map(s => `<span>${s}</span>`).join("")}
+        </div>
+    `;
+}
+
+function highlightEdges(key) {
+    document.querySelectorAll(".team-link").forEach(l => l.classList.remove("active"));
+    
+    const edgeMap = {
+        pm: ["pm-orch"],
+        orchestrator: ["pm-orch", "orch-arch", "orch-mgr", "orch-exp", "orch-cur"],
+        architect: ["orch-arch", "arch-mgr", "exp-arch"],
+        manager: ["orch-mgr", "arch-mgr", "mgr-gen", "mgr-eval", "mgr-cur"],
+        explorer: ["orch-exp", "exp-gen", "exp-arch"],
+        generator: ["mgr-gen", "gen-eval", "exp-gen"],
+        evaluator: ["mgr-eval", "gen-eval", "eval-gen"],
+        curator: ["orch-cur", "mgr-cur"]
+    };
+
+    (edgeMap[key] || []).forEach(e => {
+        const el = document.querySelector(`[data-edge="${e}"]`);
+        if (el) el.classList.add("active");
+    });
+}
+
+nodes.forEach(n => {
+    const key = n.getAttribute("data-role");
+    const activate = () => {
+        nodes.forEach(x => x.classList.remove("active"));
+        n.classList.add("active");
+        renderRole(key);
+        highlightEdges(key);
+    };
+    n.addEventListener("mouseenter", activate);
+    n.addEventListener("focus", activate);
+    n.addEventListener("click", activate);
+    n.setAttribute("tabindex", "0");
+});
+
+/* ================= SCROLL REVEAL ================= */
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            if (e.target.id === "dayBar") animateDay();
+            if (e.target.id === "ladder") {
+                e.target.querySelectorAll(".step").forEach((s, i) => {
+                    const h = parseFloat(s.getAttribute("data-h")) || 40;
+                    const bar = s.querySelector(".bar");
+                    setTimeout(() => { bar.style.height = h + "px"; }, 200 + i * 160);
+                });
+            }
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".fade-in").forEach(el => io.observe(el));
+
+/* initial pm highlight */
+setTimeout(() => { 
+    highlightEdges("pm"); 
+    document.querySelector('.role-node.pm')?.classList.add('active'); 
+}, 500);
+
+</script>
+</body>
+</html>
