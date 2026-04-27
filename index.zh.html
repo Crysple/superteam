@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>你都有AI了，怎么还死盯着屏幕？ - Super Team #01</title>
+<title>Super Team - 全链路托管式 AI 研发</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -81,11 +81,6 @@ a:hover { color: var(--ink); }
     font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.14em;
 }
 .masthead .right { text-align: right; }
-.masthead .lang-switch {
-    display: block;
-    margin-top: 6px;
-    letter-spacing: 0.08em;
-}
 .masthead .title {
     font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     font-weight: 600;
@@ -111,7 +106,7 @@ a:hover { color: var(--ink); }
 .hero h1 {
     font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     font-weight: 600;
-    font-size: clamp(42px, 7.2vw, 104px);
+    font-size: clamp(42px, 7.2vw, 80px);
     line-height: 0.98;
     letter-spacing: -0.035em;
     margin: 0 0 28px;
@@ -335,7 +330,7 @@ h2.section-head em {
     flex-shrink: 0;
 }
 .chat-caption .cc-text {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-size: 14.5px;
     color: var(--ink-soft);
@@ -352,7 +347,7 @@ h2.section-head em {
 }
 
 .parade-tag {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(24px, 2.6vw, 32px);
@@ -368,7 +363,7 @@ h2.section-head em {
 
 /* PULL QUOTE */
 .pull {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(24px, 3.2vw, 40px);
@@ -382,7 +377,7 @@ h2.section-head em {
 }
 .pull small {
     display: block;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-style: normal;
     font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--ink-mute);
@@ -424,7 +419,7 @@ h2.section-head em {
     letter-spacing: -0.02em;
 }
 .reframe .sub {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     color: var(--ink-mute);
     font-size: 16px;
@@ -433,7 +428,7 @@ h2.section-head em {
 .reframe svg { width: 100%; height: auto; display: block; margin-top: 8px; }
 .reframe .what-you-do {
     margin-top: 22px;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 11.5px; letter-spacing: 0.06em;
     color: var(--ink-soft);
     padding: 10px 12px;
@@ -476,12 +471,12 @@ h2.section-head em {
     color: var(--rust);
 }
 .team-svg-wrap::after {
-    content: "fig. 01 - 点击或悬停查看角色"; position: absolute;
+    content: "fig. 01 - tap or hover any role"; position: absolute;
     bottom: -1px; right: 20px;
     transform: translateY(50%);
     background: var(--paper-2);
     padding: 2px 10px;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute);
 }
 .team-svg { width: 100%; height: auto; display: block; }
@@ -498,7 +493,7 @@ h2.section-head em {
 .role-node.pm rect { fill: var(--rust); stroke: var(--rust-deep); }
 .role-node.pm text { fill: var(--paper); }
 .role-node.active rect { fill: var(--rust-soft); stroke: var(--rust-deep); stroke-width: 2; }
-.role-node text { font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif; font-size: 11px; font-weight: 500; text-anchor: middle; pointer-events: none; fill: var(--ink); letter-spacing: 0.04em; }
+.role-node text { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500; text-anchor: middle; pointer-events: none; fill: var(--ink); letter-spacing: 0.04em; }
 .role-node .role-note { font-size: 9px; font-weight: 400; fill: var(--ink-mute); letter-spacing: 0.04em; }
 
 .team-link { stroke: var(--ink); stroke-width: 1.1; fill: none; opacity: 0.5; transition: opacity 0.25s, stroke 0.25s, stroke-width 0.25s; }
@@ -506,7 +501,7 @@ h2.section-head em {
 .team-link.dashed { stroke-dasharray: 4 4; opacity: 0.42; }
 .team-link.active { stroke: var(--rust); stroke-width: 2; opacity: 1; stroke-dasharray: 0; }
 
-.team-annot { font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif; font-size: 10px; fill: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; }
+.team-annot { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; }
 .team-annot.rust { fill: var(--rust); font-weight: 700; }
 
 .role-panel {
@@ -524,7 +519,7 @@ h2.section-head em {
     letter-spacing: -0.022em;
 }
 .role-panel .meta {
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10.5px; letter-spacing: 0.1em;
     color: var(--ink-mute);
     text-transform: uppercase;
@@ -536,7 +531,7 @@ h2.section-head em {
     margin-top: 14px;
 }
 .role-panel .speaks span {
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.008em;
     padding: 3px 8px;
     border: 1px solid var(--line-bold);
@@ -592,7 +587,7 @@ h2.section-head em {
     box-shadow: 4px 4px 0 rgba(27,23,20,0.12);
 }
 .lie .num {
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
     color: #8a7a66;
     margin-bottom: 22px;
@@ -604,7 +599,7 @@ h2.section-head em {
     font-size: 14px;
 }
 .lie .quote {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-size: 22px;
     line-height: 1.32;
@@ -616,7 +611,7 @@ h2.section-head em {
     margin-top: 26px;
     padding-top: 18px;
     border-top: 1px dashed #362e26;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 13px;
     line-height: 1.6;
     color: #8a7a66;
@@ -632,7 +627,7 @@ h2.section-head em {
 
 .lie-closer {
     margin-top: 56px;
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(22px, 2.6vw, 32px);
@@ -644,7 +639,7 @@ h2.section-head em {
 }
 .lie-closer small {
     display: block;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-style: normal;
     font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
     margin-top: 12px;
@@ -667,7 +662,7 @@ h2.section-head em {
     max-width: 22ch;
 }
 .team-inner-head h3 em {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-weight: 500;
     font-style: italic;
     color: var(--rust);
@@ -676,7 +671,7 @@ h2.section-head em {
 
 .ladder-pull {
     margin-top: 44px;
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-size: clamp(20px, 2.2vw, 28px);
     line-height: 1.34;
@@ -714,7 +709,7 @@ h2.section-head em {
 }
 .ladder .step:last-child .bar { background: var(--rust); }
 .ladder .label {
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--ink-mute);
     margin-top: 12px;
@@ -737,7 +732,7 @@ h2.section-head em {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--ink-mute);
 }
@@ -746,7 +741,7 @@ h2.section-head em {
 .ladder-caption {
     display: flex; justify-content: space-between;
     margin-top: 14px;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute);
 }
 
@@ -778,13 +773,13 @@ h2.section-head em {
 }
 .thesis .big em {
     color: var(--rust-soft);
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-weight: 500;
     font-style: italic;
     letter-spacing: -0.018em;
 }
 .thesis .sub {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(19px, 2vw, 26px);
@@ -800,7 +795,7 @@ h2.section-head em {
     padding: 16px 26px;
     text-decoration: none;
     color: var(--paper);
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
@@ -809,7 +804,7 @@ h2.section-head em {
 /* ================= COLOPHON ================= */
 .colophon {
     padding: 36px clamp(20px, 6vw, 80px) 64px;
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10.5px; letter-spacing: 0.14em;
     color: var(--ink-mute);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
@@ -841,7 +836,7 @@ h2.section-head em {
     margin-top: 14px;
     padding-top: 12px;
     border-top: 1px dashed var(--line-bold);
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10.5px; letter-spacing: 0.14em;
     color: var(--ink-mute);
     text-transform: uppercase;
@@ -852,6 +847,68 @@ h2.section-head em {
 }
 .persistence-fig figcaption .lhs { color: var(--ink-soft); }
 .persistence-fig figcaption .rhs { color: var(--rust); }
+
+/* RETRY COMPARE */
+.rc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    margin-top: 40px;
+}
+@media (max-width: 820px) { .rc-grid { grid-template-columns: 1fr; } }
+.rc-col {
+    padding: 26px 28px 28px;
+    border-right: 1px solid var(--ink);
+    position: relative;
+}
+.rc-col:last-child { border-right: none; background: var(--paper-2); }
+@media (max-width: 820px) {
+    .rc-col { border-right: none; border-bottom: 1px solid var(--ink); }
+    .rc-col:last-child { border-bottom: none; }
+}
+.rc-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+}
+.rc-col.rc-ai .rc-label { color: var(--rust); }
+.rc-list {
+    list-style: none; counter-reset: rc;
+    margin: 0; padding: 0;
+}
+.rc-list li {
+    counter-increment: rc;
+    position: relative;
+    padding: 5px 0 5px 36px;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+.rc-list li::before {
+    content: counter(rc, decimal-leading-zero);
+    position: absolute; left: 0; top: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    font-weight: 500;
+}
+.rc-list-ai li { font-family: "JetBrains Mono", monospace; font-size: 13px; color: #857362; }
+.rc-list-ai li.rc-dash { color: var(--rust); font-style: italic; padding-top: 14px; }
+.rc-list-ai li::before { color: var(--rust); }
+.rc-time {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--green);
+}
+.rc-time.rc-time-dim { color: var(--rust); }
 
 /* ================= CONTRACT CALLOUT ================= */
 .contract-callout {
@@ -872,7 +929,7 @@ h2.section-head em {
     display: inline-block;
     padding: 3px 10px;
     background: var(--rust); color: var(--paper);
-    font-family: "JetBrains Mono", monospace, "PingFang SC", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
 }
 .contract-title {
@@ -884,13 +941,13 @@ h2.section-head em {
     line-height: 1.08;
 }
 .contract-title em {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic; font-weight: 500;
     color: var(--rust);
     letter-spacing: -0.018em;
 }
 .contract-sub {
-    font-family: "Source Serif 4", Charter, Georgia, serif, "PingFang SC", sans-serif;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
     font-style: italic;
     font-size: 16.5px;
     line-height: 1.5;
@@ -915,6 +972,191 @@ h2.section-head em {
 .contract-code .c-s { color: #8cc76a; }
 .contract-code .c-k { color: #d9b048; }
 
+.contract-foot {
+    grid-column: 1 / -1;
+    margin: 0; padding-top: 18px;
+    border-top: 1px dashed var(--line-bold);
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-size: 15px; line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 80ch;
+}
+.contract-foot b { color: var(--ink); font-weight: 600; }
+.contract-foot em {
+    font-style: italic; font-weight: 500;
+    color: var(--rust);
+}
+
+/* ================= UNDER THE HOOD ================= */
+.hood-grid {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+@media (max-width: 960px) { .hood-grid { grid-template-columns: 1fr; } }
+
+.hood-card {
+    background: #17130f;
+    color: #e7dcc9;
+    border: 1px solid var(--ink);
+    padding: 28px 26px 28px;
+    box-shadow: 3px 3px 0 rgba(27,23,20,0.10);
+}
+.hood-card .hc-no {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #8a7a66; margin-bottom: 20px;
+}
+.hood-card .hc-no b { color: var(--rust); font-weight: 700; font-size: 14px; margin-right: 8px; }
+.hood-card .hc-head {
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic; font-size: 19px; line-height: 1.3;
+    color: #e7dcc9; margin: 0 0 16px;
+}
+.hood-card .hc-body {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px; line-height: 1.72; color: #857362; margin: 0;
+}
+.hood-card .hc-body em { color: #c9bfae; font-style: normal; }
+
+.src-line {
+    margin-top: 14px; text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.16em; color: var(--ink-mute);
+}
+.src-line a { color: var(--ink-mute); text-decoration-style: dashed; text-underline-offset: 3px; }
+.src-line a:hover { color: var(--rust); }
+
+/* WIKI TIER */
+.wiki-tier {
+    margin-top: 56px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 rgba(27,23,20,0.10);
+}
+.wiki-tier-head {
+    padding: 9px 22px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper-3);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+}
+.wiki-tier-head .wth-label { color: var(--rust); font-weight: 700; }
+.wiki-tier-head .wth-src { color: var(--ink-mute); }
+.wiki-tier-head .wth-src a { color: var(--ink-mute); text-decoration-style: dashed; }
+.wiki-tier-head .wth-src a:hover { color: var(--rust); }
+.wiki-tier-body {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+}
+@media (max-width: 820px) { .wiki-tier-body { grid-template-columns: 1fr; } }
+.wiki-tier-col {
+    padding: 26px 28px 28px;
+    border-right: 1px solid var(--line);
+}
+.wiki-tier-col:last-child { border-right: none; background: var(--paper-2); }
+.wiki-tier-col h4 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-mute); margin: 0 0 14px;
+}
+.wiki-tier-col h4 strong { color: var(--rust); }
+.wiki-tree-blk {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; line-height: 1.8;
+    background: #17130f; color: #8a7a66;
+    padding: 14px 16px;
+    border: 1px solid #362e26;
+    white-space: pre; overflow-x: auto;
+}
+.wiki-tree-blk .wt-dir { color: #d9b048; }
+.wiki-tree-blk .wt-hot { color: #e98f68; }
+.wt-desc {
+    margin-top: 18px;
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic; font-size: 15px; line-height: 1.55;
+    color: var(--ink-soft);
+}
+.wt-desc b { font-style: normal; font-weight: 600; color: var(--ink); }
+.wiki-cycle {
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; line-height: 2;
+    color: var(--ink-mute);
+    padding-left: 18px;
+    border-left: 3px solid var(--rust);
+}
+.wiki-cycle .wc-on { color: var(--ink-soft); display: block; margin-top: 14px; }
+.wiki-cycle .wc-on:first-child { margin-top: 0; }
+.wiki-cycle .wc-on b { color: var(--rust); }
+.wiki-cycle .wc-dim { color: #c4b49e; display: block; }
+
+/* PM FLOW */
+.pm-flow-box {
+    margin-top: 56px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 rgba(27,23,20,0.10);
+}
+.pm-flow-head {
+    padding: 9px 22px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper-3);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+}
+.pm-flow-head .pfh-label { color: var(--rust); font-weight: 700; }
+.pm-flow-head .pfh-src { color: var(--ink-mute); }
+.pm-flow-head .pfh-src a { color: var(--ink-mute); text-decoration-style: dashed; }
+.pm-flow-head .pfh-src a:hover { color: var(--rust); }
+.pm-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 900px) { .pm-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .pm-steps { grid-template-columns: 1fr; } }
+.pm-step {
+    padding: 22px 20px 24px;
+    border-right: 1px solid var(--line);
+}
+.pm-step:last-child { border-right: none; }
+@media (max-width: 900px) {
+    .pm-step:nth-child(2n) { border-right: none; }
+    .pm-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+    .pm-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .pm-step:last-child { border-bottom: none; }
+}
+.pm-step .ps-n {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    color: var(--rust); font-weight: 700; margin-bottom: 12px;
+}
+.pm-step .ps-head {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-weight: 600; font-size: 17px;
+    letter-spacing: -0.02em; margin: 0 0 8px; color: var(--ink); line-height: 1.15;
+}
+.pm-step .ps-body {
+    font-family: "Source Serif 4", Charter, Georgia, serif;
+    font-style: italic; font-size: 14.5px; line-height: 1.52;
+    color: var(--ink-mute); margin: 0;
+}
+.pm-step .ps-badge {
+    margin-top: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    color: var(--green); border: 1px solid var(--green);
+    padding: 3px 8px; display: inline-block;
+}
+.pm-step .ps-badge.you { color: var(--rust); border-color: var(--rust); }
+
 /* ================= ANIMATIONS ================= */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.85s ease, transform 0.8s cubic-bezier(.2,.7,.2,1); }
 .fade-in.visible { opacity: 1; transform: none; }
@@ -929,56 +1171,55 @@ h2.section-head em {
 <body>
 <div class="wrap">
 <header class="masthead">
-    <div class="left">Vol. I</div>
+    <div class="left">github.com/Crysple/superteam</div>
     <div class="title">
-        <small>Super Team 黑板报</small>
         Super Team
     </div>
-    <div class="right">2026年4月 - 4分钟快读<br/><span class="lang-switch"><a href="index.html">EN</a> | <strong>中文</strong></span></div>
+    <div class="right">v0.1.0</div>
 </header>
 
 <section class="hero">
-    <div class="eyebrow">专栏 #01</div>
-    <h1>都有AI了，<br/>为啥还在<span class="strike">苦苦盯盘</span>？</h1>
-    <p class="hero-sub">Copilot, Cursor, Claude Code 工具齐活了。但你的下午依旧是这副鬼样子：</p>
+    <div class="eyebrow">痛点感知</div>
+    <h1>为什么有了AI，<br/>你还被天天<span class="strike">焊死在工位上？</span></h1>
+    <p class="hero-sub">Cursor、Claude Code 都有了，结果依然陷入赛博监工的低效内耗：</p>
 
     <div class="day fade-in" id="dayBar">
         <div class="day-head">
-            <span><b>你的周三真实写照</b> - 9:00 + 18:00</span>
-            <span>核心敲代码时间：<em>~48 分钟</em></span>
+            <span><b>YOUR WEDNESDAY</b> - 9:00 + 18:00</span>
+            <span>actual productive work: <em>~48 min</em></span>
         </div>
         <div class="day-bar">
-            <div class="day-seg plan" style="--w: 8%"><span class="lbl">规划</span></div>
-            <div class="day-seg babysit" style="--w: 5%"><span class="lbl">引导</span></div>
-            <div class="day-seg work" style="--w: 11%"><span class="lbl">宕机</span></div>
-            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">擦屁股</span></div>
-            <div class="day-seg plan" style="--w: 5%"><span class="lbl">宕机</span></div>
-            <div class="day-seg babysit" style="--w: 10%"><span class="lbl">重启</span></div>
-            <div class="day-seg work" style="--w: 4%"><span class="lbl">干活</span></div>
-            <div class="day-seg babysit" style="--w: 15%"><span class="lbl">擦屁股</span></div>
-            <div class="day-seg plan" style="--w: 8%"><span class="lbl">规划</span></div>
-            <div class="day-seg babysit" style="--w: 12%"><span class="lbl">擦屁股</span></div>
-            <div class="day-seg work" style="--w: 6%"><span class="lbl">干活</span></div>
-            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">擦屁股</span></div>
+            <div class="day-seg plan" style="--w: 8%"><span class="lbl">plan</span></div>
+            <div class="day-seg babysit" style="--w: 5%"><span class="lbl">guide</span></div>
+            <div class="day-seg work" style="--w: 11%"><span class="lbl">it quit</span></div>
+            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">babysit</span></div>
+            <div class="day-seg plan" style="--w: 5%"><span class="lbl">it quit</span></div>
+            <div class="day-seg babysit" style="--w: 10%"><span class="lbl">restart</span></div>
+            <div class="day-seg work" style="--w: 4%"><span class="lbl">work</span></div>
+            <div class="day-seg babysit" style="--w: 15%"><span class="lbl">babysit</span></div>
+            <div class="day-seg plan" style="--w: 8%"><span class="lbl">plan</span></div>
+            <div class="day-seg babysit" style="--w: 12%"><span class="lbl">babysit</span></div>
+            <div class="day-seg work" style="--w: 6%"><span class="lbl">work</span></div>
+            <div class="day-seg babysit" style="--w: 8%"><span class="lbl">babysit</span></div>
         </div>
         <div class="day-axis">
             <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
         </div>
         <div class="day-legend">
-            <span><i class="plan"></i> 规划与引导</span>
-            <span><i class="babysit"></i> 给AI当保姆/陪跑</span>
-            <span><i class="work"></i> 你实际的产出</span>
+            <span><i class="plan"></i> planning + guiding</span>
+            <span><i class="babysit"></i> babysitting AI</span>
+            <span><i class="work"></i> your actual work</span>
         </div>
-        <p class="day-sum">用着最顶级的 AI 工具，你一天依然只有可怜的 <em>~48分钟</em> 在真正输出。</p>
+        <p class="day-sum">表面是AI全面赋能，底层逻辑却是你在给Agent做保姆。一整天都在喂Prompt对齐颗粒度 -> AI 链路崩盘 -> 手动重启 -> 循环填坑。拿着顶配模型，核心人效一点没释放。</p>
     </div>
 </section>
 
 <section>
-    <span class="section-no">痛点 #01 - 撞墙期</span>
+    <span class="section-no">痛点深钻</span>
     <div class="container">
-        <div class="eyebrow fade-in">这三种死局，你这周全踩过</div>
-        <h2 class="section-head fade-in">AI 写代码很溜。<br/>到了<em>企业级落地</em>环节就全拉胯了。</h2>
-        <p class="kicker fade-in">翻车通常发生在代码写完之后——内部数据、私有镜像、远程 GPU、鉴权、消息队列、日志追踪。一旦任务出了你的本地笔电，Agent 就会面临公司内部一堆它根本搞不懂的自建轮子和特色基建。</p>
+        <div class="eyebrow fade-in">复盘这三种典型熔断场景</div>
+        <h2 class="section-head fade-in">模型侧单点能力溢出，<br/>但在<em>企业级落地的颗粒度上</em>全面溃败。</h2>
+        <p class="kicker fade-in">核心痛点往往爆发在代码生成之后的执行、集成测试和部署。脱离本地沙盒，Agent根本不懂公司内部复杂的轮子和基建生态 -- 私有镜像源，GPU调度/服务部署平台，数据中心隔离等等</p>
         
         <div class="parade">
             <div class="fade-in">
@@ -1000,8 +1241,8 @@ h2.section-head em {
                     <div class="stamp">QUIT</div>
                 </div>
                 <div class="chat-caption">
-                    <span class="cc-tag">案例 A - 周二</span>
-                    <span class="cc-text">内部生产环境的 HDFS 隔离了本地笔电——得先 <code>ssh</code> 跳板机，再 <code>kinit</code> 拿票。</span>
+                    <span class="cc-tag">Case A - Tue</span>
+                    <span class="cc-text">prod HDFS is firewalled off laptops &mdash; <code>ssh</code> to the edge node, <code>kinit</code></span>
                 </div>
             </div>
 
@@ -1023,8 +1264,8 @@ h2.section-head em {
                     <div class="stamp">QUIT</div>
                 </div>
                 <div class="chat-caption">
-                    <span class="cc-tag">案例 B - 周三</span>
-                    <span class="cc-text">内部二方包全在公司内网镜像上——pip 需要 <code>--index-url</code>，去公网 PyPI 找个毛线。</span>
+                    <span class="cc-tag">Case B - Wed</span>
+                    <span class="cc-text">internal packages live on the company mirror &mdash; pip needs <code>--index-url</code>, not public PyPI.</span>
                 </div>
             </div>
 
@@ -1047,50 +1288,45 @@ h2.section-head em {
                     <div class="stamp">QUIT</div>
                 </div>
                 <div class="chat-caption">
-                    <span class="cc-tag">案例 C - 周四</span>
-                    <span class="cc-text">笔电上没 GPU——必须用 <code>pyflyte run --remote</code> 往集群丢任务，严禁本地空转。</span>
+                    <span class="cc-tag">Case C - Thu</span>
+                    <span class="cc-text">no GPU on the laptop &mdash; submit to the cluster with <code>pyflyte run --remote</code>, don&rsquo;t run locally.</span>
                 </div>
             </div>
         </div>
-        <p class="parade-tag fade-in">各种撞墙。结局都一样：Agent 宕机罢工，你被迫人工运行）。</p>
+        <p class="parade-tag fade-in">报错形态各异，但底层逻辑同源：<br />Agent 链路熔断，只能靠人工接盘兜底。</p>
     </div>
 </section>
 
 <section style="background: var(--paper-2);">
-    <span class="section-no">痛点 #02 - 放大看案例A</span>
+    <span class="section-no">破局解法</span>
     <div class="container">
-        <div class="eyebrow fade-in">重新定义“Retry”</div>
-        <h2 class="section-head fade-in">同一堵墙。<em>Agent 被工程师降维打击。</em></h2>
-        <p class="kicker fade-in">
-            就拿案例A来说。Agent 停在了“command not found”。工程师把这当成排雷线索，而不是死胡同——直接去找那台装了 HDFS 客户端的 Jump Box。
-        </p>
+        <div class="eyebrow fade-in">遭遇本地环境依赖阻断时，资深研发的降维打击</div>
+        <h2 class="section-head fade-in">同样是"hdfs: command not found"。<br/><em>Agent 判定环境阻塞，直接原地躺平。</em></h2>
+        <p class="kicker fade-in">但成熟的研发不会在这里死磕。直接检索内部知识库，切换到能access prod hdfs的Jump Box，测试运行代码。</p>
 
         <figure class="persistence-fig fade-in">
             <img src="rss/engineer_vs_agent.png" alt="A two-row timeline comparing an engineer and an AI agent both attempting to read /data/prod/events. The engineer's row shows seven events across fourteen minutes &mdash; try, search docs, read wiki, new plan, verify, scptrun, done. The agent's row has only two events at minute zero &mdash; try, quit &mdash; and is empty for the rest of the timeline." />
             <figcaption>
-                <span class="lhs">上：工程师 &mdash; 7 个动作，14 分钟，搞定。</span>
-                <span class="rhs">下：AI Agent &mdash; 1 个动作，30 秒，直接躺平无后续。</span>
+                <span class="lhs">上：人类 Owner — 敏捷调整 7 次执行策略，14 分钟打通闭环。</span>
+                <span class="rhs">下：AI Agent — 阻塞 30 秒，单次 Action 失败后直接触发退避策略。</span>
             </figcaption>
         </figure>
 
-        <p class="ladder-pull fade-in" style="margin-top: 40px;">
-            差距不在智商。而在第一次失败后的<em>查询文档，不断尝试的持久力</em>。
-            <small>&mdash; Retry不是把报错的命令再无脑跑一遍。它是搞清楚为啥挂了，然后换条路绕过去。</small>
-        </p>
+        <p class="ladder-pull fade-in" style="margin-top: 40px;">这并非模型参数量的代差，而是 AI 缺乏在复杂业务流中"找抓手"的工程能力。真正的 Retry 机制不是写个 for 循环做无意义的死锁重试，而是要在链路熔断时，通过查阅内部基建文档，重构执行路径（work-around），最终实现目标交付。</p>
     </div>
 </section>
 
 <section>
-    <span class="section-no">思维重塑</span>
+    <span class="section-no">方法论</span>
     <div class="container">
-        <div class="eyebrow fade-in">一招破局</div>
-        <h2 class="section-head fade-in">别再指定 <em>“下一步”</em> 了。<br/>直接描述 <em>“终局状态（End State）”</em>。</h2>
+        <div class="eyebrow fade-in">拒绝保姆式的"过程管控"，升维至"终态声明"</div>
+        <h2 class="section-head fade-in">认知迭代：从<em>"指令驱动"</em> <br />升维到<em>"终态对齐"</em> </h2>
 
         <div class="reframe fade-in">
             <div class="left">
-                <span class="pill">现状</span>
-                <h3>你一步步跟Agent说怎么执行。</h3>
-                <p class="sub">一个假设翻车，整个链路断裂。你不得不切回主流程当救火队员。</p>
+                <span class="pill">现有链路</span>
+                <h3>你一步步跟Agent保姆式微操的描述怎么做。</h3>
+                <p class="sub">执行路径中任何一个节点的颗粒度没有对齐，整个 Workflow 直接崩溃，你被迫切回一线做消防员。</p>
                 <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <defs>
                         <marker id="arr01d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -1110,16 +1346,16 @@ h2.section-head em {
                         <line x1="325" y1="70" x2="355" y2="100" stroke="#c4441b" stroke-width="4"/>
                         <line x1="325" y1="100" x2="355" y2="70" stroke="#c4441b" stroke-width="4"/>
                     </g>
-                    <text x="340" y="125" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#c4441b">第4步挂了</text>
+                    <text x="340" y="125" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#c4441b">quit at step 4</text>
                     <circle cx="410" cy="85" r="9" fill="none" stroke="#1b1714" stroke-dasharray="2 3" opacity="0.3"/>
                     <text x="410" y="115" font-family="JetBrains Mono" font-size="10" text-anchor="middle" fill="#1b1714" opacity="0.3">END</text>
                 </svg>
-                <div class="what-you-do">你的指令：<b>先跑这个，再查那个，最后起这个&hellip;</b></div>
+                <div class="what-you-do">you say: <b>run this, then this, then this&hellip;</b></div>
             </div>
             <div class="right">
                 <span class="pill">Super Team</span>
-                <h3>你只管定目标，团队铺路。</h3>
-                <p class="sub">团队规划路线，遇到死胡同就重新规划（Recalculating），死磕到底，直到终态校验点全部亮绿灯。</p>
+                <h3>真正的解法是声明式架构：你只负责定义交付标准，底下的Agent自治打通链路。</h3>
+                <p class="sub">遇到业务死锁自动触发内部重排（Recalculating），动态寻优，直到所有 Hard Gate 自动化校验点全部打满绿灯。</p>
                 <svg viewBox="0 0 480 215" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <defs>
                         <pattern id="gpsGrid" width="22" height="22" patternUnits="userSpaceOnUse">
@@ -1137,14 +1373,14 @@ h2.section-head em {
                     <text x="26" y="64" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#1b1714" font-weight="700" letter-spacing="1.4">YOU</text>
 
                     <line x1="40" y1="40" x2="402" y2="40" stroke="#1b1714" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrGps)"/>
-                    <text x="220" y="32" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="9" text-anchor="middle" fill="#1b1714" font-style="italic">&ldquo;交付时，这几个条件必须满足&rdquo;</text>
+                    <text x="220" y="32" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#1b1714" font-style="italic">&ldquo;when it&rsquo;s done, X must be true&rdquo;</text>
 
                     <circle cx="420" cy="40" r="15" fill="#c4441b"/>
                     <text x="420" y="46" font-family="JetBrains Mono" font-size="17" text-anchor="middle" fill="#f5efe3" font-weight="700">«</text>
                     <text x="442" y="44" font-family="JetBrains Mono" font-size="10" fill="#c4441b" font-weight="700" letter-spacing="0.18em">END</text>
 
                     <rect x="22" y="74" width="436" height="134" fill="url(#gpsGrid)" stroke="#1b1714" stroke-width="0.5"/>
-                    <text x="32" y="88" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" fill="#786a59" font-style="italic">架构师规划的路线</text>
+                    <text x="32" y="88" font-family="JetBrains Mono" font-size="8.5" fill="#786a59" font-style="italic">architect&rsquo;s route</text>
 
                     <text x="32" y="115" font-family="JetBrains Mono" font-size="9" fill="#1b1714" font-weight="700" letter-spacing="0.16em">START</text>
                     <circle cx="74" cy="112" r="3.5" fill="#1b1714"/>
@@ -1160,7 +1396,7 @@ h2.section-head em {
                     </g>
 
                     <path d="M 206 118 C 220 130, 224 138, 244 146" fill="none" stroke="#c4441b" stroke-width="1.2" stroke-dasharray="2 2"/>
-                    <text x="240" y="135" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">重新规划&hellip;</text>
+                    <text x="240" y="135" font-family="JetBrains Mono" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">recalculating&hellip;</text>
 
                     <line x1="244" y1="152" x2="318" y2="152" stroke="#1b1714" stroke-width="1.4"/>
                     <circle cx="244" cy="152" r="3.5" fill="#1b1714"/>
@@ -1173,13 +1409,13 @@ h2.section-head em {
                     </g>
 
                     <path d="M 324 158 C 340 168, 344 174, 358 182" fill="none" stroke="#c4441b" stroke-width="1.2" stroke-dasharray="2 2"/>
-                    <text x="338" y="172" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">重算&hellip;</text>
+                    <text x="338" y="172" font-family="JetBrains Mono" font-size="8.5" text-anchor="end" fill="#c4441b" font-style="italic">recalc&hellip;</text>
 
                     <path d="M 358 188 L 420 188 L 420 60" fill="none" stroke="#4a7c3f" stroke-width="1.8" marker-end="url(#arrGpsG)"/>
                     <circle cx="358" cy="188" r="3.5" fill="#1b1714"/>
                     <circle cx="390" cy="188" r="3.5" fill="#1b1714"/>
                     <text x="358" y="179" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" fill="#786a59">s5</text>
-                    <text x="240" y="200" font-family="JetBrains Mono, PingFang SC, sans-serif" font-size="9" text-anchor="middle" fill="#4a7c3f" font-weight="700" font-style="italic">到达终态。所有校验点通关 &#10003;</text>
+                    <text x="240" y="200" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#4a7c3f" font-weight="700" font-style="italic">arrived. all checks &#10003;</text>
                 </svg>
             </div>
         </div>
@@ -1187,34 +1423,32 @@ h2.section-head em {
         <div class="contract-callout fade-in">
             <div class="contract-inner">
                 <div class="contract-head">
-                    <span class="contract-pill">核心解法</span>
-                    <h3 class="contract-title">“Done”不是一句口头汇报。<br/>它是<em>硬性网关（Gate）</em>。</h3>
-                    <p class="contract-sub">
-                        你用大白话描述业务终态。PM 负责把它翻译成自动化校验（Checks）——Shell 指令、状态查询、日志扫描、产物断言。这帮 Agent 可以疯狂试错，但只要 Checks 不全过，谁也别想强行宣布验收。
-                    </p>
+                    <span class="contract-pill">核心抓手</span>
+                    <h3 class="contract-title">底层逻辑："Done" 不能靠体感，必须拉齐硬性的 Hard Gate。</h3>
+                    <p class="contract-sub">你用自然语言输入业务终态，系统里的虚拟 PM 会将其降维解析为自动化 Check 矩阵（跑 Shell 巡检、查库状态、聚合日志、断言报错）。底层的 Agent 矩阵在沙盒里怎么迭代不管，只要验收脚本没有 100% Pass，坚决阻断发布。</p>
                 </div>
-                <pre class="contract-code"><code><span class="c-c"># end-state.yaml &mdash; PM根据你的业务目标自动生成的契约</span>
+                <pre class="contract-code"><code><span class="c-c"># end-state.yaml &mdash; auto-generated by the PM from your goal</span>
 <span class="c-k">checks</span>:
-<span class="c-c"># 案例 A &mdash; 在跳板机执行，确保数据落入 HDFS</span>
+<span class="c-c"># Case A &mdash; runs on the edge node, lands data in HDFS</span>
 &mdash; <span class="c-k">exec</span>: <span class="c-s">ssh edge-01 'hdfs dfs -test -s /out/features/_SUCCESS'</span> <span class="c-c"># exit 0</span>
 
-<span class="c-c"># 案例 B &mdash; 新 Feature 分支端到端跑通（证明依赖彻底搞定）</span>
+<span class="c-c"># Case B &mdash; the new feature actually runs end-to-end (proves deps resolved)</span>
 &mdash; <span class="c-k">exec</span>: <span class="c-s">pytest tests/test_feature_pipeline.py -q</span> <span class="c-c"># exit 0</span>
 
-<span class="c-c"># 案例 C &mdash; Agent必须抛出一个在集群真实跑通的 ${EXEC_ID}</span>
+<span class="c-c"># Case C &mdash; the agent must produce ${EXEC_ID} of a Flyte run on the cluster</span>
 &mdash; <span class="c-k">exec</span>: <span class="c-s">flytectl get execution ${EXEC_ID} -o json | jq -e '.phase=="SUCCEEDED"'</span> <span class="c-c"># exit 0</span>
-&mdash; <span class="c-k">exec</span>: <span class="c-s">flytectl get logs ${EXEC_ID} | grep -q 'Training complete'</span> <span class="c-c"># 成功信号特征</span>
-&mdash; <span class="c-k">exec</span>: <span class="c-s">! flytectl get logs ${EXEC_ID} | grep -qE 'ERROR|Traceback'</span> <span class="c-c"># 绝对没有报错痕迹</span></code></pre>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">flytectl get logs ${EXEC_ID} | grep -q 'Training complete'</span> <span class="c-c"># success signal</span>
+&mdash; <span class="c-k">exec</span>: <span class="c-s">! flytectl get logs ${EXEC_ID} | grep -qE 'ERROR|Traceback'</span> <span class="c-c"># no errors</span></code></pre>
             </div>
         </div>
     </div>
 </section>
 
 <section class="lies-section">
-    <span class="section-no">单兵Loop模式的死局</span>
+    <span class="section-no">伪需求与伪解法剖析</span>
     <div class="container">
-        <div class="eyebrow fade-in">套在死循环里的单体Agent</div>
-        <h2 class="section-head fade-in">你的Prompt：<em>没干完别停。</em><br/>它的行为：<em>各种停下来的借口。</em></h2>
+        <div class="eyebrow fade-in">理论模型很丰满</div>
+        <h2 class="section-head fade-in">你的 Prompt ：没干完别停 <br/>大模型理解：<em>赶紧找个借口罢工</em></h2>
 
         <div class="lies-grid fade-in">
             <div class="lie">
@@ -1238,7 +1472,7 @@ h2.section-head em {
             <div class="lie">
                 <div class="num"><b>&#10115;</b>&nbsp; 甩锅给环境</div>
                 <div class="quote">&ldquo;这明显是环境问题，超出了我的控制范围，不怪我。&rdquo;</div>
-                <div class="reality">明明是第47行拼写错误。<br/>“环境”表示这锅我不背。</div>
+                <div class="reality">明明是第47行拼写错误。<br/>"环境"表示这锅我不背。</div>
             </div>
 
             <div class="lie">
@@ -1248,37 +1482,30 @@ h2.section-head em {
             </div>
         </div>
 
-        <p class="lie-closer fade-in">
-            单一Agent根本无法在几小时的跨度内，稳定兼顾规划、开发、兜底和自我验收
-            <small>&mdash; 这就是为什么光套个死循环（Loop）根本生不出韧性（Persistence）。</small>
-        </p>
+        <p class="lie-closer fade-in">指望一个单体 Agent 在几个小时的跨度里，既能做顶层架构设计，又做底层代码实现，还要兼顾 CI/CD 和 QA 验收。这在工程上极不科学，状态机和上下文不可避免会走向混沌。</p>
     </div>
 </section>
 
 <section class="team-section">
-    <span class="section-no">引入 Super Team</span>
+    <span class="section-no">破局打法</span>
     <div class="container">
-        <div class="eyebrow fade-in">打破单兵死循环的最终答案</div>
-        <h2 class="section-head fade-in">把活儿甩给 <em>Super Team</em>。<br/>睡一觉，醒来收验结果。</h2>
-        <p class="kicker fade-in">
-            Super Team 不是什么玄学 Prompt。它是一套包裹在模型外围的硬核系统：职责隔离、持久化状态、客观网关检验，还有一个能把跑崩的任务硬拽回来的大管家（Manager）。
-        </p>
-
+        <h2 class="section-head fade-in">把活儿甩给 <em>SuperTeam</em>，<br />醒来直接验收成果</h2>
+        <p class="kicker fade-in">Super Team 不是换个马甲的玄学 Prompt，<br/><em>它是一套完备的 Harness（治理框架）系统</em>：将各级 Agent 的权责边界隔离，固化状态机，引入客观的 Hard Gates，并配备能在执行偏离时强行拉回主线的项目大管家（Manager）。</p>
         <div class="ladder-wrap fade-in">
             <div class="ladder-axis">
                 <span class="you">&larr; 你目前在这</span>
-                <span class="unlock">跨入这一步，解锁“睡后交付” &rarr;</span>
+                <span class="unlock">跨入这一步，解锁"托管式交付" &rarr;</span>
             </div>
             <div class="ladder" id="ladder">
                 <div class="step" data-h="18">
                     <div class="bar"></div>
                     <div class="duration">5s</div>
-                    <div class="label">代码补全</div>
+                    <div class="label">Tab-complete</div>
                 </div>
                 <div class="step" data-h="32">
                     <div class="bar"></div>
                     <div class="duration">30s</div>
-                    <div class="label">Cursor 补全</div>
+                    <div class="label">Cursor autocomplete</div>
                 </div>
                 <div class="step" data-h="80">
                     <div class="bar"></div>
@@ -1299,24 +1526,20 @@ h2.section-head em {
         </div>
 
         <div class="ladder-caption">
-            <span>一行代码</span>
-            <span>一个函数</span>
-            <span>一个 Feature</span>
-            <span>一个小 PR</span>
-            <span>端到端业务交付</span>
+            <span>一行代码赋能</span>
+            <span>单函数闭环</span>
+            <span>微型 Feature 落地</span>
+            <span>小粒度 PR 交付</span>
+            <span>端到端业务大盘打通</span>
         </div>
         
         <p class="ladder-pull fade-in">
-            代码补全给了我们单行代码。Agent 包揽了微型任务。<br/>
-            下一个行业跃迁是<em>“托管式交付”（Delegated Delivery）</em>——人不在，系统照样把活儿干得明明白白。
+            以前，代码补全只是给个 snippet；Agent 只能包揽微型任务。下一个起飞点是"托管式交付"——人不在工位，系统一样能在后台把需求撸完。
         </p>
-
         <div class="team-inner-head fade-in">
-            <span class="eyebrow">架构解析</span>
-            <h3>你只跟一个人（PM）提需求。<br/>一整个黑盒团队帮你填坑。</h3>
-            <p class="kicker">
-                你只和 <b>PM</b> 对接。PM 把你的业务意图翻译成验收标准（AC）。在黑盒内部，一群专家级 Agent 开始接力：拉会调研、出方案、撸代码、跑单测——跟你这周天天纯手工干的那些脏活累活一模一样。
-            </p>
+            <span class="eyebrow">架构升维</span>
+            <h3>从架构上看：你只需当一个甩手掌柜，<br/><em>跟唯一的接口人（Product Manager）提需求</em></h3>
+            <p class="kicker">至于黑盒底层的专家矩阵怎么去拉齐会议、输出技术方案、拉分支、跑单元测试，遇到报错怎么做故障自愈——这原本都是耗费你大量研发带宽的低效劳动。</p>
         </div>
 
         <div class="team-wrap">
@@ -1336,11 +1559,11 @@ h2.section-head em {
                     <rect width="100%" height="100%" fill="url(#gridP)"/>
 
                     <line x1="0" y1="130" x2="720" y2="130" stroke="#1b1714" stroke-width="0.8" stroke-dasharray="6 4" opacity="0.5"/>
-                    <text x="20" y="22" class="team-annot">人类视角</text>
-                    <text x="20" y="148" class="team-annot rust">黑盒运作 - Super Team</text>
+                    <text x="20" y="22" class="team-annot">Owner 视角</text>
+                    <text x="20" y="148" class="team-annot rust">黑盒底座 - Super Team</text>
 
                     <line class="team-link primary" x1="130" y1="90" x2="230" y2="195" marker-end="url(#arrTeamRust)"/>
-                    <text x="175" y="150" class="team-annot rust">全链路你只碰这一条线</text>
+                    <text x="175" y="150" class="team-annot rust">全链路你只需对接这一根触点</text>
 
                     <line class="team-link" x1="260" y1="230" x2="400" y2="230" data-edge="pm-orch" marker-end="url(#arrTeam)"/>
                     
@@ -1360,38 +1583,38 @@ h2.section-head em {
 
                     <g class="role-node user" data-role="user">
                         <rect x="70" y="58" width="120" height="48" rx="2"/>
-                        <text x="130" y="82">人类金主</text>
-                        <text x="130" y="97" class="role-note">定义需求与终态</text>
+                        <text x="130" y="82">Owner / 金主大盘</text>
+                        <text x="130" y="97" class="role-note">拉齐需求与业务终态</text>
                     </g>
                     <g class="role-node pm" data-role="pm">
                         <rect x="190" y="195" width="140" height="60" rx="2"/>
                         <text x="260" y="220">PM</text>
-                        <text x="260" y="238" class="role-note">你的唯一接口人</text>
+                        <text x="260" y="238" class="role-note">你的唯一业务接口人</text>
                     </g>
                     <g class="role-node" data-role="orchestrator">
                         <rect x="400" y="200" width="140" height="56" rx="2"/>
                         <text x="470" y="223">编排调度器</text>
-                        <text x="470" y="239" class="role-note">推着流水线往前滚</text>
+                        <text x="470" y="239" class="role-note">驱动流水线持续滚动</text>
                     </g>
                     <g class="role-node" data-role="architect">
                         <rect x="560" y="275" width="130" height="56" rx="2"/>
                         <text x="625" y="298">架构师</text>
-                        <text x="625" y="314" class="role-note">拆解方案 + 锁死契约</text>
+                        <text x="625" y="314" class="role-note">方案解构 + 契约固化</text>
                     </g>
                     <g class="role-node" data-role="manager">
                         <rect x="530" y="378" width="130" height="56" rx="2"/>
                         <text x="595" y="401">项目经理</text>
-                        <text x="595" y="417" class="role-note">无状态监工 + 兜底</text>
+                        <text x="595" y="417" class="role-note">无状态巡检 + 异常兜底</text>
                     </g>
                     <g class="role-node" data-role="explorer">
                         <rect x="130" y="310" width="140" height="56" rx="2"/>
                         <text x="200" y="333">探索先锋</text>
-                        <text x="200" y="349" class="role-note">排雷 + 沉淀知识</text>
+                        <text x="200" y="349" class="role-note">扫雷探路 + 知识沉淀</text>
                     </g>
                     <g class="role-node" data-role="generator">
                         <rect x="275" y="410" width="150" height="50" rx="2"/>
                         <text x="350" y="432">开发牛马</text>
-                        <text x="350" y="448" class="role-note">无历史包袱 + 纯打码</text>
+                        <text x="350" y="448" class="role-note">无历史包袱 + 纯执行</text>
                     </g>
                     <g class="role-node" data-role="evaluator">
                         <rect x="275" y="470" width="150" height="50" rx="2"/>
@@ -1401,18 +1624,18 @@ h2.section-head em {
                     <g class="role-node" data-role="curator">
                         <rect x="60" y="415" width="150" height="50" rx="2"/>
                         <text x="135" y="437">知识策展人</text>
-                        <text x="135" y="453" class="role-note">萃取经验进全局知识库</text>
+                        <text x="135" y="453" class="role-note">提炼复盘 + 全局知识库沉淀</text>
                     </g>
-                    <text x="700" y="500" text-anchor="end" class="team-annot">点击或悬停查看角色</text>
+                    <text x="700" y="500" text-anchor="end" class="team-annot">点击或悬停切换角色视图</text>
                 </svg>
             </div>
 
             <aside class="role-panel" id="rolePanel" aria-live="polite">
                 <div class="eyebrow">角色 - PM</div>
                 <h3>PM</h3>
-                <div class="meta">第一阶段 - 你的专属接口人</div>
-                <p><b>全队唯一和你对接的角色</b>。跟你头脑风暴敲定需求，对齐验收标准（AC）。起草不可篡改的终态契约（Contract）。</p>
-                <p>需求对齐后，PM 就甩手交给机器团队了。如果执行层卡在了一个只有你能授权的节点——比如需要个私有 Key，或者要做个业务取舍——PM 会把这唯一的阻塞点路由回给你。</p>
+                <div class="meta">你的唯一业务接口人</div>
+                <p><b>全团队唯一对外的业务接口人</b>。和你头脑风暴拉齐需求颗粒度，对齐验收标准（AC）。起草不可逆的终态契约（Contract）。</p>
+                <p>需求颗粒度对齐之后，PM 就把执行权下放给机器矩阵了。如果执行链路卡在了一个只有你能拍板的节点——比如要私有 Key 授权，或者业务侧的取舍——PM 会把这唯一的阻塞点路由回给你拍板。</p>
                 <div class="speaks">
                     <span class="head">对接对象:</span>
                     <span>YOU</span><span>Orchestrator</span>
@@ -1420,131 +1643,192 @@ h2.section-head em {
             </aside>
         </div>
 
-        <p class="pull fade-in" style="margin-top: 56px;">
-            你只管定义<em>业务终态（Outcome）</em>。黑盒团队搞定执行链路。<br/>
-            跑通了，直接收 PR 和验收证据；卡死了，你只会收到那个全公司只有你能拍板的底层抉择。
-            <small>少一点保姆式陪跑，多一点真正的托管式交付。</small>
+        <p class="pull fade-in" style="margin-top: 56px;">一旦全链路跑通，你直接验收 PR 产出物：无论是模型训练大盘的 AUC 提点，还是微服务集成测试的打平状态，抑或是数据仓库里已经清洗沉淀的表。</p>
+    </div>
+</section>
+
+<section>
+    <span class="section-no">底层基建</span>
+    <div class="container">
+        <div class="eyebrow fade-in">实现高质量交付的三个核心底座</div>
+        <h2 class="section-head fade-in">治理框架（Harness）<br/>才是<em>打通最后一公里的底层逻辑</em>。</h2>
+        <p class="kicker fade-in">同样的底层大模型，套上不同的工程化外壳，交付质量天差地别。 精准的上下文路由、对抗式网关评估以及无状态的增量重启，才是将一个"玩具模型"升维为<em>企业级可靠系统</em>的核心壁垒——别再迷信写出冗长的花式 Prompt 了。</p>
+
+        <div class="hood-grid fade-in">
+            <div class="hood-card">
+                <div class="hc-no"><b>01</b>记忆隔离</div>
+                <p class="hc-head">"Context 是极其昂贵的算力资源。"</p>
+                <p class="hc-body">在窗口里堆砌毫无关联的历史包袱，纯粹是在透支模型的 Reasoning 算力。 Super Team 采用<em>渐进式按需下发（Progressive Disclosure）</em>策略：每个 Node 只摄入与当前边界强相关的信息，拒绝全局污染。 Manager 采用 270 秒的 Tick 机制重读状态树，彻底掐断了 Context 随生命周期无限膨胀的恶性循环。</p>
+            </div>
+            <div class="hood-card">
+                <div class="hc-no"><b>02</b>对抗校验</div>
+                <p class="hc-head">"自评天然带有"放水"倾向。"</p>
+                <p class="hc-body">模型一旦陷入自身的推理闭环，就会对自己的错误点头称是。 Evaluator（评估器）<em>只盯契约（Contract）和最终产出</em>— 严禁偷看生成器的思考过程。 这种设计在工程上保证了评估是"对抗式"的，而不是"复读机"式的，无需更换底层模型，也无需折腾 Prompt 工程。</p>
+            </div>
+            <div class="hood-card">
+                <div class="hc-no"><b>03</b>增量复位</div>
+                <p class="hc-head">"Context 堆积必然引发链路漂移。"</p>
+                <p class="hc-body">长生命周期产生的 Context 堆积会严重拉低系统可靠性。 生成器和评估器在每个增量节点都是<em>全新的（Fresh）</em>— 某个单元熔断，只重跑该单元，不搞全量重启。 固化的契约接管了 Context 的角色：精准承载新 Agent 复现或评判工作所需的全部上下文，不多不少。</p>
+            </div>
+        </div>
+        <p class="src-line fade-in">参考来源 —<a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic 工程团队：长生命周期 Agent 应用的治理框架设计</a>
         </p>
+
+        <div class="wiki-tier fade-in">
+            <div class="wiki-tier-head">
+                <span class="wth-label">全局 Wiki + 本地热启动</span>
+                <span class="wth-src">灵感源自<a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank" rel="noopener">Andrej Karpathy &mdash; LLM Wiki</a></span>
+            </div>
+            <div class="wiki-tier-body">
+                <div class="wiki-tier-col">
+                    <h4>知识的<strong>两级分层架构</strong></h4>
+                    <div class="wiki-tree-blk"><span class="wt-dir">~/.superteam/</span>        <span style="color:#4f4438">← 全局 (跨项目通用)</span>
+  <span class="wt-hot">index.md</span>           <span style="color:#4f4438">← 热缓存 (Hot Cache)</span>
+  knowledge/
+
+<span class="wt-dir">.superteam/</span>           <span style="color:#4f4438">← 本地 (当前项目)</span>
+  knowledge/
+    index.md
+    &hellip;</div>
+                    <p class="wt-desc">
+                        <b>本地 Wiki</b>沉淀项目侧专属的发现 — 架构坑位、未文档化的内部 API、测试范式、集成时的 Gotchas。<b>全局 Wiki</b>跟着 Owner 流转：工具链秘籍、公司规范、可复用的 Gate 脚本。 Explorer 在啃代码库前先读 Wiki，Curator 在每次 Session 收尾时自动同步。</p>
+                </div>
+                <div class="wiki-tier-col">
+                    <h4>知识如何<strong>复利</strong></h4>
+                    <div class="wiki-cycle">
+<span class="wc-on">Session 1 — 冷启动</span>
+<span class="wc-dim">Explorer 从 0 到 1 摸排代码库</span>
+
+<span class="wc-on">Session 收尾 —<b>Curator 启动</b></span>
+<span class="wc-dim">沉淀结论并同步至<span style="font-family:inherit;color:#e98f68">~/.superteam/</span></span>
+
+<span class="wc-on">Session 2 &mdash; <b>热启动</b></span>
+<span class="wc-dim">Explorer 优先加载全局 Wiki， 仅 Diff 检索新增或缺失的部分</span>
+
+<span class="wc-on">Session N — 上下文秒级唤起</span>
+<span class="wc-dim">代码尚未读取，开发范式、工具链 和公司规约已完成预加载</span></div>
+                    <p class="wt-desc" style="margin-top:18px;">首次冷启动后，每一个 Session 都是"热乎"的。 Wiki 由<em>Agent 自动化维护</em>— Curator 写，Explorer 读，每一个项目都在做正向积累。<em>原本每次会话都要重灌一遍的 Tribal Knowledge，沉淀成了永久资产。</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-flow-box fade-in">
+            <div class="pm-flow-head">
+                <span class="pfh-label">PM 工作流与增量化交付</span>
+            </div>
+            <div class="pm-steps">
+                <div class="pm-step">
+                    <div class="ps-n">01 — 启动初始化</div>
+                    <div class="ps-head">你只输入预期产出</div>
+                    <p class="ps-body">一句话或一段话即可。无需输出技术方案 — 团队矩阵自治寻路。</p>
+                    <span class="ps-badge you">全链路只需你下场这一次</span>
+                </div>
+                <div class="pm-step">
+                    <div class="ps-n">02 — 需求解构</div>
+                    <div class="ps-head">PM 追问到有把握收口为止</div>
+                    <p class="ps-body">结合代码库现状的针对性追问 — 锁定 Scope、边界 Case、集成节点 — 直到 Spec 没有歧义。</p>
+                </div>
+                <div class="pm-step">
+                    <div class="ps-n">03 — Hard Gate 准入</div>
+                    <div class="ps-head">写代码前先卡门（Hard Gate）</div>
+                    <p class="ps-body">动手写实现代码之前，先把验收脚本写好并评审通过。"Done" 必须是可量化 Check 的，不是靠体感。</p>
+                    <span class="ps-badge you">由你负责 Review 和准入</span>
+                </div>
+                <div class="pm-step">
+                    <div class="ps-n">04 — 执行落地</div>
+                    <div class="ps-head">增量开发，全新生产/校验配对</div>
+                    <p class="ps-body">每个任务单元配独立的生成器和评估器。故障彻底隔离，不引发链路雪崩。上下文绝不跨单元堆积。</p>
+                    <span class="ps-badge">全自动执行</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
 <section class="thesis">
     <div class="container">
-        <div class="eyebrow">用一句话总结</div>
-        <p class="big">现有的 AI 工具，能力边界死死卡在<em>模型本身的边界</em>上。</p>
-        <p class="sub">下一个产品高地是包裹在模型外围的基础设施：工程韧性、故障恢复、长时记忆、调度编排和终态校验。</p>
-        <p class="sub" style="margin-top: 32px; color: var(--paper);">
-            Super Team 把这些痛点降维成一个<em style="color: var(--rust-soft);">系统工程（Systems Problem）</em>。用强契约让“Done”变成绝对可校验；用专家分发保持职能隔离；用共享内存沉淀跑通的路径。只有凑齐这些，一个好用的代码助手才能进化成真正能<em style="color: var(--rust-soft);">托付业务的建制化团队</em>。
-        </p>
-        <a class="next" href="02-contract-gated-verification.html">
-            下一篇 &nbsp;-&nbsp; “Done”是怎么变得毫无谈判余地的
-        </a>
+        <div class="eyebrow">一句话总结</div>
+        <p class="big">目前市面上大部分 AI 工具，天花板就是底层模型本身。</p>
+        <p class="sub">下一代产品的护城河，在于模型周边的全栈工程化：持久化、容错机制、Memory、编排与对抗校验。</p>
+        <p class="sub" style="margin-top: 32px; color: var(--paper);">Super Team 用"搞系统"的工程思路把这件事拆开做：用 Contract 强对齐 Done 的标准，用专家化 Agent 做职责解耦，用共享内存确保上下文闭环。这才是从"代码助手"升维到"自动驾驶研发团队"的本质拐点——你不只是在用它，你是在向它派单。</p>
     </div>
 </section>
 
 <footer class="colophon">
-    <span>Super Team 专栏 - 01/09 - 2026年4月</span>
+    <span>Super Team - 全链路托管式 AI 研发</span>
     <span>Inter Tight - Source Serif 4 - JetBrains Mono</span>
-    <span><a href="../superteam-dev/">github.com/&hellip;/superteam-dev</a></span>
+    <span><a href="https://github.com/Crysple/superteam">github.com/Crysple/superteam</a></span>
 </footer>
 
-<script>
-/* ================= DAY BAR ================= */
-const dayBar = document.getElementById("dayBar");
-const daySegs = dayBar.querySelectorAll(".day-seg");
-
-function animateDay() {
-    daySegs.forEach((s, i) => {
-        const w = s.style.getPropertyValue("--w");
-        setTimeout(() => {
-            s.style.width = w;
-            s.classList.add("visible");
-        }, 200 + i * 90);
-    });
-}
-
-/* ================= TEAM ================= */
-const ROLES = {
-    user: {
-        title: "人类金主（You）",
-        meta: "完全游离于团队执行之外",
-        body: [
-            "你描述 <b>业务诉求</b> 和 <b>'Done' 的标准</b>。仅此而已。",
-            "没有繁琐的启停配置。不看监控日志大屏。告别保姆式的 Step-by-step 引导。"
-        ],
-        speaks: ["PM"]
-    },
-    pm: {
-        title: "PM",
-        meta: "第一阶段 - 你的专属接口人",
-        body: [
-            "<b>全队唯一和你对接的角色</b>。跟你头脑风暴敲定需求，对齐验收标准（AC）。起草不可篡改的终态契约（Contract）。",
-            "需求对齐后，PM 就甩手交给机器团队了。如果执行层卡在了一个只有你能授权的节点——比如需要个私有 Key，或者要做个业务取舍——PM 会把这唯一的阻塞点路由回给你。"
+<script>/* ================= DAY BAR ================= */ const dayBar = document.getElementById("dayBar"); const daySegs = dayBar.querySelectorAll(".day-seg"); function animateDay() { daySegs.forEach((s, i) => { const w = s.style.getPropertyValue("--w"); setTimeout(() => { s.style.width = w; s.classList.add("visible"); }, 200 + i * 90); }); } /* ================= TEAM ================= */ const ROLES = { user: { title: "你，金主大盘", meta: "团队边界外", body: [ "你只需要描述<b>你的预期产出</b>和<b>什么是完成的标准</b>。就这样。", "无需启动。无需监控。无需逐步指导。" ], speaks: ["PM"] }, pm: { title: "PM", meta: "你的接口 - 阶段 1", body: [ "<b>全团队唯一对外的业务接口人</b>。和你头脑风暴拉齐需求颗粒度，对齐验收标准（AC）。起草不可逆的终态契约（Contract）。",
+            "需求颗粒度对齐之后，PM 就把执行权下放给机器矩阵了。如果执行链路卡在了一个只有你能拍板的节点——比如要私有 Key 授权，或者业务侧的取舍——PM 会把这唯一的阻塞点路由回给你拍板。"
         ],
         speaks: ["YOU", "Orchestrator"]
     },
     orchestrator: {
-        title: "Orchestrator（调度中枢）",
-        meta: "全链路发动机 - 第1到5阶段",
+        title: "编排调度器",
+        meta: "流水线驱动 - 阶段 1-5",
         body: [
-            "整个团队的 <b>流水线大脑</b>。负责决定下一步该调哪个队友，以及给他们灌什么上下文（Context）——将进件、规划、执行、评估、交付串成一条线。",
-            "永远不跟你直接对话——面向用户的交互死死收敛在 PM 那一层。"
+            "团队的<b>流水线驱动</b>。决策下一个跑哪个队员、下发什么上下文——接单、规划、执行、评估、交付。",
+            "从不直接和你对话——所有面向用户的交互均由 PM 路由。"
         ],
         speaks: ["PM", "Architect", "Manager", "Explorer", "Curator"]
     },
     architect: {
-        title: "Architect（架构师）",
-        meta: "路径规划 + 冻结契约",
+        title: "架构师",
+        meta: "规划 + 契约固化",
         body: [
-            "把大需求暴力拆解成极具颗粒度、且可被严格验证的 <b>业务增量</b>。冻结包含 <i>硬性网关（Hard Gates）</i>（本质就是 Shell 脚本）的交付契约。",
-            "在整个执行期保持存活，随时待命。遇到路不通时动态调整 Plan，并且 Review 那些被打回的网关测试用例。"
+            "把需求拆解成可量化验证的<b>增量</b>。用<i>Hard Gates</i>（Shell 脚本）把契约固化下来。",
+            "执行链路上保持在线，根据现场动态调整规划，对被挑战的网关做 Review。"
         ],
         speaks: ["Orchestrator", "Explorer", "Manager"]
     },
     manager: {
-        title: "Manager（大管家）",
-        meta: "无状态监工 - 270秒轮询保活",
+        title: "项目经理",
+        meta: "无状态 - 270 秒 Tick",
         body: [
-            "掌控全局共享状态。在各个角色之间穿针引线，路由 <i>网关驳回（GATE-CHALLENGE）</i>、能力盲区和通关信号。如果架构师被逼到死胡同，它会直接拉取 Checkpoint 强行重启，并喂入进阶版的 Context。",
-            "<b>绝对没有长时记忆（Long-term memory）。</b> 每 270 秒苏醒一次，读本地文件、做决策、打日志打点、继续装死睡去。",
-            "内建五级上升阶梯机制（Escalation Ladder）——每一次触发 Strike 都在 <i>改变策略</i>，绝不只是无脑的 Retry。"
+            "持有共享状态。在角色之间路由<i>网关挑战</i>、<i>无法执行</i>、<i>完成</i>等关键信号。如果架构师卡住了，会发出 Checkpoint，并以渐进式上下文重启。",
+            "<b>无长期记忆</b>。每 270 秒 Tick 唤醒一次，重读文件、决策、记录、休眠。",
+            "五级升级阶梯——每升一级，<i>策略</i>本身要换，而不是无脑重试。"
         ],
         speaks: ["Orchestrator", "Architect", "Generator", "Evaluator", "Curator"]
     },
     explorer: {
-        title: "Explorer（探索先锋）",
-        meta: "长程调研 - 扫地僧",
+        title: "探索先锋",
+        meta: "调研 - 长生命周期常驻",
         body: [
-            "团队的 <b>活字典</b>。从 <span class='mono'>~/.superteam/</span> 全局知识库直接热启动。遇到文档和依赖问题，任何队友都能随时 Call 它。",
-            "一言不合就派生一次性的子 Agent 去踩坑、读 API 源码。把杂乱的排雷结果提纯进共享知识库。始终保持自身的 Context 极致精简干净。",
-            "当 Generator（牛马） 抛出“这题我不会”时，Explorer 负责把“未知”铲平。"
+            "团队的<b>知识 Owner</b>。从全局 Wiki <span class='mono'>~/.superteam/</span> 热启动。任何队员都可以提单。",
+            "派发一次性子代理出去做调研。结果聚合进共享知识库。自身的上下文保持精简。",
+            "当开发牛马遇到'我不知道怎么做'的阻塞点时，探索先锋负责把未知打通成已知。"
         ],
         speaks: ["PM", "Architect", "Generator", "Evaluator"]
     },
     generator: {
-        title: "Generator（开发牛马）",
-        meta: "纯净上下文 - 专注写码",
+        title: "开发牛马",
+        meta: "每个增量节点全新",
         body: [
-            "针对每一个 Work Unit 拉起一个 <b>崭新、纯净</b> 的 Claude Code 会话。它只看冻结的契约和前几轮的踩坑报错。撸代码。提交 Commit。",
-            "坚决不堆积历史 Context = 绝对不会跑偏幻觉（No Drift）。每一个任务切片都是一次极其干净的冷启动。"
+            "每个工作单元起一个<b>全新</b>的 Claude Code 会话。读取冻结的契约和此前的失败尝试。落地实现。提交。",
+            "无累积上下文 = 无链路漂移。每一个单元都从零起步。"
         ],
         speaks: ["Evaluator", "Manager", "Explorer"]
     },
     evaluator: {
-        title: "Evaluator（无情QA）",
-        meta: "每次校验独立拉起",
+        title: "无情测试",
+        meta: "每个增量节点全新",
         body: [
-            "和 Generator 在物理链路上完全隔离。负责跑通硬性网关（不消耗任何 LLM Token，纯跑脚本）。",
-            "字典里只有三个词：<b>APPROVED（通关）</b>、<b>REVISE（代码有 Bug）</b>、<b>GATE-CHALLENGE（脚本用例本身写错了）</b>。系统底层挂了 Hook，任何不附带 JSON 格式测试报告的判定都会被直接拦截抹杀。"
+            "和开发牛马完全解耦。运行 Hard Gates（消耗 0 个 LLM token）。",
+            "只输出三种裁决：<b>通过</b>、<b>修改</b>（代码 bug）、<b>网关挑战</b>（测试错了）。钩子会拦截一切没有网关结果 JSON 背书的裁决。"
         ],
         speaks: ["Generator", "Architect", "Manager"]
     },
     curator: {
-        title: "Curator（知识策展人）",
-        meta: "会话萃取 + 全局知识库 - 第5阶段",
+        title: "知识策展人",
+        meta: "Session + 全局 Wiki - 阶段 5",
         body: [
-            "在每次成功交割的 Session 结尾自动触发。用四大灵魂拷问（这坑新不新颖？试错成本大不大？是不是高频场景？是否长期有效？）把团队刚刚踩过的坑过滤一遍，活下来的规矩和脏活 SOP 写进 <span class='mono'>~/.superteam/</span>。",
-            "操作 SOP 变成内化技能（Skills）。踩坑事实变成全局知识（Knowledge）。团队下一次接单时，直接带着前人留下的神装开局。"
+            "每一次成功 Session 收尾时，把团队学到的东西过一遍<b>四步价值漏斗</b>（新颖？昂贵？高频？持久？）做筛选，活下来的写入 <span class='mono'>~/.superteam/</span>。",
+            "流程沉淀成技能。事实沉淀成知识。下一次 Session 用之前所有 Session 的复利学习成果热启动。"
         ],
         speaks: ["Orchestrator", "Manager"]
     }
@@ -1558,7 +1842,7 @@ function renderRole(key) {
     if (!r) return;
 
     panel.innerHTML = `
-        <div class="eyebrow">角色 - ${key.toUpperCase()}</div>
+        <div class="eyebrow">Role - ${key.toUpperCase()}</div>
         <h3>${r.title}</h3>
         <div class="meta">${r.meta}</div>
         ${r.body.map(p => `<p>${p}</p>`).join("")}
