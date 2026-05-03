@@ -229,8 +229,9 @@ cmd_get() {
     exit 2
   fi
   case "$path" in
-    -*) jq -r "$path" "$STATE_FILE" ;;
-    *)  jq -r ".${path}" "$STATE_FILE" ;;
+    -*)  jq -r "$path" "$STATE_FILE" ;;        # jq flag-style, pass as-is
+    .*)  jq -r "$path" "$STATE_FILE" ;;        # already a complete jq path
+    *)   jq -r ".${path}" "$STATE_FILE" ;;     # bare name, prepend dot
   esac
 }
 

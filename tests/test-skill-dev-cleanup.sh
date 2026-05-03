@@ -116,30 +116,29 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# (4) version-N directory structure: script runs against a temp work tree
+# (4) under-cap and over-cap behaviour
+# The script counts .superteam/status/version-*-generator.md files and
+# exits 0 when under the limit, 1 when at or over it.
 # ---------------------------------------------------------------------------
 echo ""
-echo "--- (4) runs against minimal version directory structure ---"
+echo "--- (4) under-cap exits 0, over-cap exits 1 ---"
 
 WORK4="$TMPDIR/t4"
-mkdir -p "$WORK4/.superteam/scripts/version-1"
-mkdir -p "$WORK4/.superteam/gate-results"
+mkdir -p "$WORK4/.superteam/status"
 
-cat > "$WORK4/.superteam/scripts/version-1/gate-check-dummy.sh" <<'GATE'
-#!/bin/bash
-echo "PASS"
-exit 0
-GATE
+# Seed two completed version entries.
+touch "$WORK4/.superteam/status/version-1-generator.md"
+touch "$WORK4/.superteam/status/version-2-generator.md"
 
+# Under cap: 2 versions, limit 8 → exit 0.
 RC=0
-(cd "$WORK4" && bash "$SKILL_DEV_SCRIPT" version-1 2>/dev/null) || RC=$?
-if [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ]; then
-  echo "  PASS: script ran and returned a defined exit code ($RC)"
-  PASS=$((PASS + 1))
-else
-  echo "  FAIL: script returned unexpected exit code $RC"
-  FAIL=$((FAIL + 1))
-fi
+(cd "$WORK4" && bash "$SKILL_DEV_SCRIPT" 8 2>/dev/null) || RC=$?
+assert_exit "under cap (2 versions, limit 8) exits 0" 0 "$RC"
+
+# Over cap: 2 versions, limit 1 → exit 1.
+RC=0
+(cd "$WORK4" && bash "$SKILL_DEV_SCRIPT" 1 2>/dev/null) || RC=$?
+assert_exit "over cap (2 versions, limit 1) exits 1" 1 "$RC"
 
 # ---------------------------------------------------------------------------
 # (5) Script does not crash when .superteam dir is absent

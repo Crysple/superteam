@@ -97,7 +97,7 @@ else
   fi
 
   for role in generator evaluator tester test-evaluator; do
-    if echo "$ACTIVE_AGENTS" | grep -q "$role"; then
+    if echo "$ACTIVE_AGENTS" | tr ' ' '\n' | grep -qx "$role"; then
       if [ -f "$SUPERTEAM_DIR/verdicts/increment-${CURRENT_INCREMENT}.md" ]; then
         verdict=$(parse_yaml_field "$SUPERTEAM_DIR/verdicts/increment-${CURRENT_INCREMENT}.md" "verdict")
         if [ "$verdict" = "APPROVED" ]; then

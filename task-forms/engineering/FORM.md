@@ -16,11 +16,11 @@ termination: "all increments complete + final acceptance gates pass"
 
 ## PM Guidance
 
-When the user's request includes testing on infrastructure (remote compute pods, managed workflow engines), read `{PLUGIN_ROOT}/references/execution-testing.md` and enforce its requirements:
+When the user's request includes testing on infrastructure (remote compute pods, managed workflow engines):
 
-- **Execution FRs must use explicit execution language** ("must be EXECUTED and PASS", not "must be added"). See the GOOD vs BAD examples in the reference.
+- **Execution FRs must use explicit execution language** ("must be EXECUTED and PASS", not "must be added").
 - **Hard gates for execution FRs must verify execution evidence files**, not grep test source code. The reference defines the evidencefile format and gate script pattern.
-- **FR-4.4 equivalent** must explicitly state: "gates must verify EXECUTION EVIDENCE, not source code patterns."
+- **must explicitly state**: "gates must verify EXECUTION EVIDENCE, not source code patterns."
 
 If the user's prompt references that document or mentions "execution testing", this guidance is mandatory.
 

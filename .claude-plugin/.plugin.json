@@ -1,8 +1,0 @@
-{
-    "name": "superteam",
-    "version": "0.0.1",
-    "description": "General-purpose agent superteam for Claude code - contract-gated verification loops with 7 outer-loop roles, 5-phase orchestration, task form-driven inner-loop cooperation, and structural prevention of premature exits.",
-    "author": "Superteam",
-    "license": "MIT",
-    "hooks": "./hooks/hooks.json"
-}

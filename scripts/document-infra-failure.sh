@@ -129,9 +129,11 @@ if [ "$SUBSTANTIVE" -lt 3 ]; then
   exit 1
 fi
 
-# All checks passed - update frontmatter
-sed -i "s/^remediation_attempts:.*/remediation_attempts: ${SUBSTANTIVE}/" "$FILE"
-sed -i "s/^status:.*/status: concluded/" "$FILE"
+# All checks passed - update frontmatter.
+# Use a temp file for portability: GNU sed needs -i alone, BSD/macOS sed needs -i ''.
+_tmp=$(mktemp)
+sed -e "s/^remediation_attempts:.*/remediation_attempts: ${SUBSTANTIVE}/" \
+    -e "s/^status:.*/status: concluded/" "$FILE" > "$_tmp" && mv "$_tmp" "$FILE"
 
 echo "Validated."
 exit 0

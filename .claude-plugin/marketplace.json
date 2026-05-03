@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "superteam",
+  "version": "1.0.0",
+  "description": "Superteam plugin marketplace for Claude Code",
+  "owner": {
+    "name": "Superteam"
+  },
+  "plugins": [
+    {
+      "name": "superteam",
+      "description": "General-purpose agent superteam for Claude code - contract-gated verification loops with 7 outer-loop roles, 5-phase orchestration, task form-driven inner-loop cooperation, and structural prevention of premature exits.",
+      "version": "0.0.1",
+      "author": {
+        "name": "Superteam"
+      },
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

@@ -63,7 +63,7 @@ DEAD_ROLE=""
 DEAD_AGE=""
 DEAD_STATUS=""
 
-while IFS=read -r agent; do
+while IFS= read -r agent; do
   [ -z "$agent" ] && continue
   role=$(find_role "$agent")
   [ -z "$role" ] && continue

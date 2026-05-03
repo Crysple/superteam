@@ -149,10 +149,48 @@ rm -rf "$RACE_DIR"
 # (4) get command reads a field
 # ===========================================================================
 echo ""
-echo "--- (4) get: read current_increment ---"
+echo "--- (4) get: bare name and dotted-path forms ---"
 
-GOT="$(cd "$TMPDIR" && bash "$STATE_MUTATE" get current_increment)"
-assert_eq "get current_increment returns '0'" "0" "$GOT"
+# Use a fresh dir so these reads are independent of the --set calls in (2).
+GET_DIR=$(mktemp -d)
+(cd "$GET_DIR" && bash "$STATE_MUTATE" --init)
+
+# Bare nested name: current_increment lives at .loop.current_increment.
+GOT="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get loop.current_increment)"
+assert_eq "get bare nested name (loop.current_increment)" "0" "$GOT"
+
+# Dotted-path form used in every agent instruction (e.g. get .phase).
+# Bug: ".${path}" with path=".phase" produced "..phase" (jq syntax error).
+GOT="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .phase 2>&1)"
+assert_eq "get .phase (dotted path)" "pm" "$GOT"
+
+GOT="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .loop.current_increment 2>&1)"
+assert_eq "get .loop.current_increment (nested dotted path)" "0" "$GOT"
+
+# agents must be an object — dotted read must not return empty, which would
+# corrupt it via the read-modify-write chain in (4b).
+AGENTS_TYPE="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .agents | jq -r 'type' 2>/dev/null || echo "error")"
+assert_eq "get .agents returns an object (not empty/error)" "object" "$AGENTS_TYPE"
+
+# ===========================================================================
+# (4b) get + --set round-trip: dotted read must not corrupt agents
+# ===========================================================================
+echo ""
+echo "--- (4b) read-modify-write: dotted get must not corrupt agents ---"
+
+# Simulates the TL spawn-protocol: read .agents, modify with jq, write back.
+# Before the fix, get .agents returned empty (jq syntax error on "..agents"),
+# so --set agents= wrote "agents":"" and the object was lost.
+AGENTS_JSON="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .agents)"
+UPDATED="$(echo "$AGENTS_JSON" | jq '.active_agents += ["orchestrator"]')"
+(cd "$GET_DIR" && bash "$STATE_MUTATE" --set "agents=$UPDATED")
+RESULT="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .agents | jq -r '.active_agents[0]')"
+assert_eq "agents survives dotted read-modify-write" "orchestrator" "$RESULT"
+
+AGENTS_TYPE="$(cd "$GET_DIR" && bash "$STATE_MUTATE" get .agents | jq -r 'type' 2>/dev/null || echo "error")"
+assert_eq "agents is still an object after round-trip" "object" "$AGENTS_TYPE"
+
+rm -rf "$GET_DIR"
 
 # ===========================================================================
 # (5) usage error: --set with no arg exits 2

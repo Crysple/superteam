@@ -112,7 +112,7 @@ Update '~/.superteam/index.md* if you deleted any very-stale files.
 
 When first spawned (after warm-start if applicable), dispatch up to 5 subagents in parallel - one per scan step: **Structure**, **Tech stack**, **Conventions**, **Integrations**, **Company knowledge** (external knowledge MCP, if configured). Skip subagents for topics already fresh from warm-start.
 
-Collect and synthesize results. Write findings to `codebase-overview.md`, `conventions.md`, `dependencies.md`. Update `index.md`. Report to PM/TL: "Initial codebase survey complete. Knowledge base seeded at `.superteam/knowledge/`."
+Collect and synthesize results. Write findings to `codebase-overview.md`, `conventions.md`, `dependencies.md`, Update `index.md`. Send a survey-complete notice to **TL only**. Reply to questions received during the survey **separately** to each requester (see "On Receiving a Question") - never fold answers into the TL notice.
 
 ### On Receiving a Question
 
@@ -150,7 +150,9 @@ When the Architect asks you to research an unknown topic (from a Generator's ina
 | Architect | Research replies; inability-exploration findings | `SendMessage` to `"architect"` |
 | Generator | Replying to questions about conventions, patterns | `SendMessage` to `"generator"` |
 | Evaluator | Replying to questions about expected behaviors | `SendMessage` to `"evaluator"` |
-| TL | Initial survey complete; status updates | `SendMessage` to `"team-lead"` |
+| TL | Initial survey complete; status updates | `SendMessage` to `"team-lead"` & `"pm"` |
+
+**Hard rule:** Question answers always go to the **requester**, never to TL.
 
 ---
 

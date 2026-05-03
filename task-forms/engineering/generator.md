@@ -35,7 +35,7 @@ If `attempts/increment-{N}.md` exists, **read it before writing any code**. Do N
 - Write clean, working code with tests as specified.
 - **Query the Explorer** via `SendMessage` to `"explorer"` for patterns, conventions, or corner cases.
 
-**Execution-testing increments**: If the contract type is `execution-testing`, your job is NOT just to write test code - you must EXECUTE it and write evidence. Read `{PLUGIN_ROOT}/references/execution-testing.md` for the procedure. Specifically:
+**Execution-testing increments**: If the contract type is `execution-testing`, your job is NOT just to write test code - you must EXECUTE it and write evidence, specifically:
 - For remote compute pod tests: set up pod, install branch code, run tests, collect artifact trees, write evidence to `.superteam/execution-evidence/pod-tests.md`
 - For managed workflow engines: build image, register workflow, execute workflow, wait for the terminal success state, collect console URL and artifact trees, write evidence to `.superteam/execution-evidence/workflow-e2e.md`
 - The gate scripts for your increment check these evidence FILES, not your source code. If you only write test code without executing it, all your gates will fail.
