@@ -17,6 +17,8 @@
 
 **[Features](#features)** · **[Quick Start](#quick-start)** · **[How It Works](#how-it-works)** · **[Run on a Remote VM](#run-it-247-on-a-remote-vm-claude-code-team-mode--tmux)** · **[Related Projects](#related-projects)** · **[Global Wiki](#global-wiki--local-warm-start)**
 
+**Language / 语言:** [English](README.md) · [中文](README.zh.md)
+
 **Blog:** [English](https://crysple.github.io/superteam/index.html) · [中文](https://crysple.github.io/superteam/index.zh.html)
 
 <img src="docs/demo.gif" alt="Superteam demo" width="600"/>
@@ -82,7 +84,7 @@ Requires **Claude Code v2.1.32+** with agent teams enabled. Launch inside tmux s
 
 ```bash
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-tmux new -s superteam
+tmux new-session -s superteam
 claude --teammate-mode tmux
 ```
 
@@ -111,9 +113,11 @@ PM: The impression-logs Hive partition lands at 02:00 UTC. "Last 7 days" —
     should the cutoff be 7 calendar days from now, or 7 *complete* daily
     partitions (i.e., yesterday minus 6)? The latter avoids a partial last
     day if you re-run mid-morning.
+
 PM: AUC ≥ 0.78 — same eval split your current production model is graded on,
     or a fresh holdout? If holdout, I need to coordinate with the data team
     to lock the split before training starts.
+
 PM: Your model registry uses semver. Tagging v3 implies a major bump — does
     the serving config need to change, or is this architecture-compatible
     with the current v2.x server? If incompatible, we need a backward-compat
@@ -128,14 +132,18 @@ Final Acceptance Gates
 ─────────────────────────────────────────────────────────────────────────────
   gate-01-data.sh       last 7 complete impression-logs partitions exist
                         → hdfs dfs -test -d /data/impressions/dt={d-7..d-1}/_SUCCESS
+
   gate-02-submit.sh     pyflyte run --remote returns ${EXEC_ID}
                         → flytectl get execution ${EXEC_ID} --details
+
   gate-03-train.sh      Flyte execution reaches SUCCEEDED
                         → flytectl get execution ${EXEC_ID} -o json \
                             | jq -e '.phase=="SUCCEEDED"'
+
   gate-04-auc.sh        eval AUC ≥ 0.78 on the locked v2 holdout split
                         → python eval.py --split locked-holdout-2026-Q1 \
                             | jq -e '.auc>=0.78'
+
   gate-05-registry.sh   ctr-ranker:v3 published with signed manifest, ready=true
                         → registry-cli get ctr-ranker:v3 \
                             | jq -e '.signed and .ready'
@@ -155,15 +163,20 @@ The hero example above is just one shape. Here are four more enterprise scenario
 ```bash
 # Spark + Airflow data pipeline that actually lands in prod  (HDFS firewalled, kerberos on edge node)
 /superteam Add a daily PySpark job: join /data/prod/events with the feature_flags table, land partitioned output to /out/daily/features/, schedule in Airflow with retries, alert #data-oncall on SLA breach.
+
 # New gRPC endpoint against the internal stack  (private package mirror, multi-language stubs)
 /superteam Add POST /v2/payments to payment-service with idempotency keys, pull acme-auth==2.4.* from the company mirror, regenerate Python + Java proto stubs, update the OpenAPI doc.
+
 # Kafka consumer that has to survive production  (DLQ, broker restart, internal auth)
 /superteam Kafka consumer on user-events at 10k/s: write to the internal Postgres (ldap-auth), emit DataDog metrics, route poison messages to user-events-dlq, survive a broker restart with zero loss.
+
 # Canary rollout with SLO gates and auto-rollback  (real prod operation, no babysitting)
 /superteam Migrate user-search from EC2 to our k8s platform. Keep P99 ≤ 80ms, roll out behind the canary flag, watch the Datadog dashboard for 1h, auto-rollback if error rate > 0.5%.
+
 # Warm-up — runs entirely on your laptop  (no cluster needed, good first try)
 /superteam Build a rate-limited job queue with Redis and dead-letter support.
 ```
+
 Each enterprise prompt forces gates that can't be faked on a laptop — `hdfs dfs -test`, `pip install --index-url`, `kafka-consumer-groups --describe`, `kubectl rollout status && datadog-cli monitor get`. **That's where "done" stops being a vibe.**
 
 ---
@@ -181,7 +194,7 @@ sudo apt-get install -y tmux jq
 # --- starting an overnight run ---
 ssh you@vm.dev
 cd ~/projects/my-repo
-tmux new -s superteam             # one named tmux session per project
+tmux new-session -s superteam             # one named tmux session per project
 claude                             # launches Claude Code (it spawns teammates as panes)
 > /plugin marketplace add Crysple/superteam   # one-time, per machine
 > /plugin install superteam@superteam
@@ -191,13 +204,14 @@ claude                             # launches Claude Code (it spawns teammates a
 # Press Ctrl-b d  to DETACH. Close your laptop. Go home.
 # --- the next morning, anywhere ---
 ssh you@vm.dev
-tmux attach -t superteam         # full team state restored, work has been progressing
+tmux attach-session -t superteam         # full team state restored, work has been progressing
 # Watch the Orchestrator's pane, or:
 jq '.phase, .phase_step, .agents.active_agents' .superteam/state.json
 tail -f .superteam/events.jsonl  # decisions, anomalies, gate verdicts as they happen
 ```
 
 **Why this works so well together:**
+
 | Component | What it gives you for 24/7 runs |
 |-----------|---------------------------------|
 | **Claude Code team mode** | Each teammate is an independent Claude Code session in its own tmux pane — failures are isolated, restarts are surgical, context never bleeds between roles. |
@@ -206,7 +220,7 @@ tail -f .superteam/events.jsonl  # decisions, anomalies, gate verdicts as they h
 | **Watchdog (1200 s)** | Detects pipeline stalls and auto-relaunches the Orchestrator with full context. You don't have to babysit the babysitter. |
 | **Per-increment fresh pairs** | Long runs don't degrade — each Generator/Evaluator starts with zero accumulated context. |
 **Recovery checklist** (if you ever ssh in and something looks wrong):
-1. `tmux attach -t superteam` — see all panes at a glance.
+1. `tmux attach-session -t superteam` — see all panes at a glance.
 2. `jq '.' .superteam/state.json | head -40` — current phase, active agents, watchdog stall count.
 3. `tail -50 .superteam/events.jsonl` — last decisions, anomalies, escalations.
 4. If the Orchestrator pane is gone: the watchdog will respawn it within 20 minutes. Or restart it manually — the new instance will re-read `state.json` and resume from the recorded `phase_step`.
